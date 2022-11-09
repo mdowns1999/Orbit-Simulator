@@ -15,6 +15,7 @@
 #include "uiInteract.h"   // for INTERFACE
 #include "uiDraw.h"       // for RANDOM and DRAW*
 #include "position.h"     // for POINT
+#include "test.h"
 #include <cmath>
 #define _USE_MATH_DEFINES //PI
 #include <math.h>
@@ -257,9 +258,11 @@ int main(int argc, char** argv)
    // Initialize the demo
    Demo demo(ptUpperRight);
 
-   // set everything into action
-   ui.run(callBack, &demo);
+   //Run Unit Tests
+   testRunner();
 
+   // set everything into action
+   //ui.run(callBack, &demo);
 
    return 0;
 }

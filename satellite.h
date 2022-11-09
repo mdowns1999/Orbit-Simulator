@@ -9,12 +9,16 @@
 #pragma once
 #include "position.h"
 #include "uiInteract.h"
-
+#include <iostream>
+#include <vector>
+using namespace std;
 
 class Satellite
 {
    // For the Unit Tests
-   friend testSatellite;
+   friend class testSatellite;
+   friend class DummySatellite;
+   friend class StubSatellite;
 
 private:
    //ADD VELOCITY
@@ -26,13 +30,12 @@ private:
 
 public:
    //Methods
-   Satellite();
+   Satellite(){}
    float getRadius();
-   bool isDead();
+   bool isDead() { return dead; }
    Position getPosition();
-   void kill();
-   void draw();
-   void destroy(Satellite satellites);
+   virtual void draw(){};
+   void destroy(vector<Satellite> &satellites, vector<Satellite> &decay);
    void move(float time);
    void input(Interface ui);
 
