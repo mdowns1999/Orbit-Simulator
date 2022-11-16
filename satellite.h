@@ -31,13 +31,13 @@ private:
 public:
    //Methods
    Satellite(){}
-   float getRadius();
+   float getRadius() { return radius; }
    bool isDead() { return dead; }
-   Position getPosition();
+   Position getPosition() { return pos; }
    virtual void draw(){};
    void destroy(vector<Satellite> &satellites, vector<Satellite> &decay);
    void move(float time);
-   void input(Interface ui);
+   //void input(Interface ui);
 
 };
 

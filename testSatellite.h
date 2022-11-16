@@ -1,211 +1,201 @@
-/***********************************************************************
-* Header File:
-*    Test Satallite : Test the Satellite class
-* Author:
-*   Ben, Star, and Mike
-* Summary:
-*    All the unit tests for Satellite
-************************************************************************/
-
-#pragma once
-
-#include <iostream>
-#include "cassert"
-#include "satellite.h"
-#include <vector>
-using namespace std;
-
-class DummySatellite : public Satellite
-{
-public:
-   DummySatellite() {}
-   float getRadius() { assert(false); return 0.0; }
-   bool isDead() { assert(false); return false; }
-   Position getPosition() { assert(false); Position pos; return pos; }
-   void draw() { assert(false); }
-   void destroy(vector<DummySatellite>& satellites, vector<DummySatellite>& decay) { assert(false); }
-   void move(float time) { assert(false); }
-   void input(Interface ui) { assert(false); }
-};
-
-class StubSatellite : public DummySatellite
-{
-public:
-   StubSatellite(){}
-   float getRadius() { return 2.0; }
-   bool isDead() { return dead; }
-   Position getPosition() { Position pos; return pos; }
-   void destroy(vector<StubSatellite>& satellites, vector<StubSatellite>& decay);
-};
-
-
-
-
-
-class testSatellite
-{
-public:
-   void run()
-   {
-      isDeadTest_True();
-      isDeadTest_False();
-      getRadiusTest();
-      getPositionTest();
-      moveTestFallDown();
-      moveTestFallUp();
-      moveTestFallRight();
-      moveTestFallLeft();
-      destroyTest();
-      inputTest();
-
-   }
-
-
-private:
-
-    void isDeadTest_False() 
-   {
-        // setup
-       Satellite satellite;
-       satellite.dead = false;
-       bool deathStatus;
-       // exercise
-       deathStatus = satellite.isDead();
-       // verify
-       assert(deathStatus == false);
-   }   // teardown
-
-   void isDeadTest_True() const
-   {
-        // setup
-       Satellite  satellite;
-       satellite.dead = true;
-       bool deathStatus;
-       // exercise
-       deathStatus = satellite.isDead();
-       // verify
-       assert(deathStatus == true);
-   }   // teardown
-
-    void getRadiusTest() const
-    {
-      // setup
-      Satellite satellite;
-      satellite.radius = 2.5;
-      double satelliteRadius;
-      // exercise
-      satelliteRadius = satellite.getRadius();
-      // verify
-      assert(satelliteRadius == 2.5);
-    }   // teardown
-
-    void getPositionTest() const
-    {
-      // setup
-      Satellite satellite;
-      Position position(100.0, 100.0);
-      satellite.pos = position;
-      Position testPos;
-      // exercise
-      testPos = satellite.getPosition();
-      // verify
-      assert(testPos.getMetersX() == 100.0);
-      assert(testPos.getMetersY() == 100.0);
-    }   // teardown
-
-    void moveTestFallDown() const
-    {
-      // setup
-      Satellite satellite;
-      Position newPosition(0.0, 6378000.0);
-      Velocity vel(0.0, 0.0);
-      satellite.pos = newPosition;
-      satellite.velocity = vel;
-      double time = 48;
-      // exercise
-      satellite.move(time);
-      // verify
-      assert(satellite.pos.getMetersX() == 0.0);
-      assert(satellite.pos.getMetersY() == 6377990.2);
-      assert(satellite.velocity.getDX() == 0.0);
-      assert(satellite.velocity.getDY() == -9.8);
-    }   // teardown
-
-    void moveTestFallUp() const
-    {
-       // setup
-       Satellite satellite;
-       Position newPosition(0.0, -6378000.0);
-       Velocity vel(0.0, 0.0);
-       satellite.pos = newPosition;
-       satellite.velocity = vel;
-       double time = 48;
-       // exercise
-       satellite.move(time);
-       // verify
-       assert(satellite.pos.getMetersX() == 0.0);
-       assert(satellite.pos.getMetersY() == -6377990.2);
-       assert(satellite.velocity.getDX() == 0.0);
-       assert(satellite.velocity.getDY() == 9.8);
-    }   // teardown
-
-    void moveTestFallLeft() const
-    {
-      // setup
-      Satellite satellite;
-      Position newPosition(6378000.0, 0.0);
-      Velocity vel(0.0, 0.0);
-      satellite.pos = newPosition;
-      satellite.velocity = vel;
-      double time = 48;
-      // exercise
-      satellite.move(time);
-      // verify
-      assert(satellite.pos.getMetersY() == 0.0);
-      assert(satellite.pos.getMetersX() == 6377990.2);
-      assert(satellite.velocity.getDX() == -9.8);
-      assert(satellite.velocity.getDY() == 0.0);
-    }   // teardown
-
-    void moveTestFallRight() const
-    {
-       // setup
-       Satellite satellite;
-       Position newPosition(-6378000.0, 0.0);
-       Velocity vel(0.0, 0.0);
-       satellite.pos = newPosition;
-       satellite.velocity = vel;
-       double time = 48;
-       // exercise
-       satellite.move(time);
-       // verify
-       assert(satellite.pos.getMetersY() == 0.0);
-       assert(satellite.pos.getMetersX() == -6377990.2);
-       assert(satellite.velocity.getDX() == 9.8);
-       assert(satellite.velocity.getDY() == 0.0);
-    }   // teardown
-
-
-    void destroyTest() const
-    {
-      // setup
-      Satellite satellite;
-      vector<Satellite> satellites;
-      satellites.push_back(satellite);
-      vector<Satellite> decay;
-      // exercise
-      satellite.destroy(satellites, decay);
-      // verify
-      assert(satellites.size() == 0);
-      assert(decay.size() == 3);
-    }   // teardown
-
-    void inputTest() const
-    {
-       // setup
-       Satellite satellite;
-       // exercise
-       // verify
-    }   // teardown
-
-};
+///***********************************************************************
+//* header file:
+//*    test satallite : test the satellite class
+//* author:
+//*   ben, star, and mike
+//* summary:
+//*    all the unit tests for satellite
+//************************************************************************/
+//
+//#pragma once
+//
+//#include <iostream>
+//#include "cassert"
+//#include "satellite.h"
+//#include <vector>
+//using namespace std;
+//
+//class dummysatellite : public satellite
+//{
+//public:
+//   dummysatellite() {}
+//   float getradius() { assert(false); return 0.0; }
+//   bool isdead() { assert(false); return false; }
+//   position getposition() { assert(false); position pos; return pos; }
+//   void draw() { assert(false); }
+//   void destroy(vector<dummysatellite>& satellites, vector<dummysatellite>& decay) { assert(false); }
+//   void move(float time) { assert(false); }
+//   void input(interface ui) { assert(false); }
+//};
+//
+//class stubsatellite : public dummysatellite
+//{
+//public:
+//   stubsatellite(){}
+//   float getradius() { return 2.0; }
+//   bool isdead() { return dead; }
+//   position getposition() { position pos; return pos; }
+//   void destroy(vector<stubsatellite>& satellites, vector<stubsatellite>& decay);
+//};
+//
+//
+//
+//
+//
+//class testsatellite
+//{
+//public:
+//   void run()
+//   {
+//      isdeadtest_true();
+//      isdeadtest_false();
+//      getradiustest();
+//      getpositiontest();
+//      movetestfalldown();
+//      movetestfallup();
+//      movetestfallright();
+//      movetestfallleft();
+//      destroytest();
+//
+//   }
+//
+//
+//private:
+//
+//    void isdeadtest_false() 
+//   {
+//         setup
+//       satellite satellite;
+//       satellite.dead = false;
+//       bool deathstatus;
+//        exercise
+//       deathstatus = satellite.isdead();
+//        verify
+//       assert(deathstatus == false);
+//   }   // teardown
+//
+//   void isdeadtest_true() const
+//   {
+//         setup
+//       satellite  satellite;
+//       satellite.dead = true;
+//       bool deathstatus;
+//        exercise
+//       deathstatus = satellite.isdead();
+//        verify
+//       assert(deathstatus == true);
+//   }   // teardown
+//
+//    void getradiustest() const
+//    {
+//       setup
+//      satellite satellite;
+//      satellite.radius = 2.5;
+//      double satelliteradius;
+//       exercise
+//      satelliteradius = satellite.getradius();
+//       verify
+//      assert(satelliteradius == 2.5);
+//    }   // teardown
+//
+//    void getpositiontest() const
+//    {
+//       setup
+//      satellite satellite;
+//      position position(100.0, 100.0);
+//      satellite.pos = position;
+//      position testpos;
+//       exercise
+//      testpos = satellite.getposition();
+//       verify
+//      assert(testpos.getmetersx() == 100.0);
+//      assert(testpos.getmetersy() == 100.0);
+//    }   // teardown
+//
+//    void movetestfalldown() const
+//    {
+//       setup
+//      satellite satellite;
+//      position newposition(0.0, 6378000.0);
+//      velocity vel(0.0, 0.0);
+//      satellite.pos = newposition;
+//      satellite.velocity = vel;
+//      double time = 48;
+//       exercise
+//      satellite.move(time);
+//       verify
+//      assert(satellite.pos.getmetersx() == 0.0);
+//      assert(satellite.pos.getmetersy() == 6377990.2);
+//      assert(satellite.velocity.getdx() == 0.0);
+//      assert(satellite.velocity.getdy() == -9.8);
+//    }   // teardown
+//
+//    void movetestfallup() const
+//    {
+//        setup
+//       satellite satellite;
+//       position newposition(0.0, -6378000.0);
+//       velocity vel(0.0, 0.0);
+//       satellite.pos = newposition;
+//       satellite.velocity = vel;
+//       double time = 48;
+//        exercise
+//       satellite.move(time);
+//        verify
+//       assert(satellite.pos.getmetersx() == 0.0);
+//       assert(satellite.pos.getmetersy() == -6377990.2);
+//       assert(satellite.velocity.getdx() == 0.0);
+//       assert(satellite.velocity.getdy() == 9.8);
+//    }   // teardown
+//
+//    void movetestfallleft() const
+//    {
+//       setup
+//      satellite satellite;
+//      position newposition(6378000.0, 0.0);
+//      velocity vel(0.0, 0.0);
+//      satellite.pos = newposition;
+//      satellite.velocity = vel;
+//      double time = 48;
+//       exercise
+//      satellite.move(time);
+//       verify
+//      assert(satellite.pos.getmetersy() == 0.0);
+//      assert(satellite.pos.getmetersx() == 6377990.2);
+//      assert(satellite.velocity.getdx() == -9.8);
+//      assert(satellite.velocity.getdy() == 0.0);
+//    }   // teardown
+//
+//    void movetestfallright() const
+//    {
+//        setup
+//       satellite satellite;
+//       position newposition(-6378000.0, 0.0);
+//       velocity vel(0.0, 0.0);
+//       satellite.pos = newposition;
+//       satellite.velocity = vel;
+//       double time = 48;
+//        exercise
+//       satellite.move(time);
+//        verify
+//       assert(satellite.pos.getmetersy() == 0.0);
+//       assert(satellite.pos.getmetersx() == -6377990.2);
+//       assert(satellite.velocity.getdx() == 9.8);
+//       assert(satellite.velocity.getdy() == 0.0);
+//    }   // teardown
+//
+//
+//    void destroytest() const
+//    {
+//       setup
+//      satellite satellite;
+//      vector<satellite> satellites;
+//      satellites.push_back(satellite);
+//      vector<satellite> decay;
+//       exercise
+//      satellite.destroy(satellites, decay);
+//       verify
+//      assert(satellites.size() == 0);
+//      assert(decay.size() == 3);
+//    }   // teardown
+//};

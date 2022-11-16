@@ -63,6 +63,7 @@ private:
    static double metersFromPixels;
 };
 
+
 /*********************************************
  * COMPUTE DISTANCE
  * Find the distance between two positions

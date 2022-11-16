@@ -23,23 +23,15 @@ using namespace std;
 
 
 
-/***********************************************************************
- * Velocity COMPUTE ANGLE
- * Calculates the angle based on the velocity.
- ************************************************************************/
-double computeAngle(double x, double y)
-{
-   return atan2(x, y) * 180 / M_PI;
-}
+///***********************************************************************
+// * Velocity COMPUTE ANGLE
+// * Calculates the angle based on the velocity.
+// ************************************************************************/
+//double computeAngle(double x, double y)
+//{
+//   return atan2(x, y) * 180 / M_PI;
+//}
 
-/***************************************************
-* CONVERT RADIANS
-* Concert from Degrees to Radians
-****************************************************/
-double convertToRadians(double degrees)
-{
-   return (degrees / 360.00) * (2.00 * M_PI);
-}
 
 /***************************************************
 * CONVERT HEIGHT ABOVE EARTH
@@ -59,46 +51,46 @@ double gravityHeight(double RADIUS, double HEIGHT, double GRAVITY)
    return GRAVITY * ((RADIUS / (RADIUS + HEIGHT)) * (RADIUS / (RADIUS + HEIGHT)));
 }
 
-/***********************************************
-* COMPUTE HORIZONTAL COMPONENT
-* Find the horizontal component of a velocity or acceleration.
-* The equation is:
-*     sin(a) = x / total
-***********************************************/
-double computeHorizontalComp(double angle, double gravityHeight)
-{
-   // Compute x componenent of acceleration
-   // a is the radians from the degreesToRadians
-   // total is the output of computeAcceleration
-   return sin(angle) * gravityHeight;
-}
+///***********************************************
+//* COMPUTE HORIZONTAL COMPONENT
+//* Find the horizontal component of a velocity or acceleration.
+//* The equation is:
+//*     sin(a) = x / total
+//***********************************************/
+//double computeHorizontalComp(double angle, double gravityHeight)
+//{
+//   // Compute x componenent of acceleration
+//   // a is the radians from the degreesToRadians
+//   // total is the output of computeAcceleration
+//   return sin(angle) * gravityHeight;
+//}
+//
+///***********************************************
+// * COMPUTE VERTICAL COMPONENT
+// * Find the vertical component of a velocity or acceleration.
+// * The equation is:
+// *     cos(a) = y / total
+// ***********************************************/
+//double computeVerticalComp(double angle, double gravityHeight)
+//{
+//   // Compute y componenent of acceleration
+//   return (cos(angle) * gravityHeight);
+//}
 
-/***********************************************
- * COMPUTE VERTICAL COMPONENT
- * Find the vertical component of a velocity or acceleration.
- * The equation is:
- *     cos(a) = y / total
- ***********************************************/
-double computeVerticalComp(double angle, double gravityHeight)
-{
-   // Compute y componenent of acceleration
-   return (cos(angle) * gravityHeight);
-}
 
-
-/***********************************************
-* CONSTANT ACCELERATION
-* Find the horizontal/vertical change of velocity.
-* The equation is:
-*   Horizontal:
-*       dx = dx + ddx * t
-*   Vertical:
-*       dy = dy + ddy * t
-***********************************************/
-double ConstantAcceleration(double ds, double dds, double TIME)
-{
-   return ds + (dds * TIME);
-}
+///***********************************************
+//* CONSTANT ACCELERATION
+//* Find the horizontal/vertical change of velocity.
+//* The equation is:
+//*   Horizontal:
+//*       dx = dx + ddx * t
+//*   Vertical:
+//*       dy = dy + ddy * t
+//***********************************************/
+//double ConstantAcceleration(double ds, double dds, double TIME)
+//{
+//   return ds + (dds * TIME);
+//}
 
 
 /***********************************************
@@ -188,19 +180,19 @@ void callBack(const Interface* pUI, void* p)
    double ddy = 0;
 
 
-   int angle = computeAngle(pDemo->x, pDemo->y);
+   //int angle = computeAngle(pDemo->x, pDemo->y);
 
-   double radians = convertToRadians(angle);
+   //double radians = convertToRadians(angle);
 
    // Compute physics
-   pDemo->height = computeHeightAboveEarth(pDemo->x, pDemo->y,RADIUS);
-   pDemo->gHeight = gravityHeight(RADIUS, pDemo->height, GRAVITY);
-   ddx = computeHorizontalComp(radians, pDemo->gHeight);
-   ddy = computeVerticalComp(radians, pDemo->gHeight);
-   pDemo->dx = ConstantAcceleration(pDemo->dx, ddx, TIME);
-   pDemo->dy = ConstantAcceleration(pDemo->dy, ddy, TIME);
-   pDemo->x = distanceFormula(pDemo->x, pDemo->dx, ddx, TIME);
-   pDemo->y = distanceFormula(pDemo->y, pDemo->dy, ddy, TIME);
+   //pDemo->height = computeHeightAboveEarth(pDemo->x, pDemo->y,RADIUS);
+   //pDemo->gHeight = gravityHeight(RADIUS, pDemo->height, GRAVITY);
+   //ddx = computeHorizontalComp(radians, pDemo->gHeight);
+   //ddy = computeVerticalComp(radians, pDemo->gHeight);
+   //pDemo->dx = ConstantAcceleration(pDemo->dx, ddx, TIME);
+   //pDemo->dy = ConstantAcceleration(pDemo->dy, ddy, TIME);
+   //pDemo->x = distanceFormula(pDemo->x, pDemo->dx, ddx, TIME);
+   //pDemo->y = distanceFormula(pDemo->y, pDemo->dy, ddy, TIME);
 
    // Set the New Meters
    pDemo->ptGPS.setMeters(pDemo->x, pDemo->y);
