@@ -6,11 +6,13 @@ class Fragment : public Satellite
 {
     public:
         //Methods
-        Fragment(){}
+        Fragment() { decayTime = 10; }
         Fragment(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
-        virtual float getRadius() { return radius; }
-        virtual bool isDead() { return dead; }
+        
+        //Getters
+        virtual double getRadius() { return radius; }
         virtual Position getPosition() { return pos; }
+        virtual bool isDead() { return dead; }
         virtual void draw(){}
         virtual void move(double time) {}
 

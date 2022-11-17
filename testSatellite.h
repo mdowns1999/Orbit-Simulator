@@ -56,6 +56,8 @@ public:
       movetestfallright();
       movetestfallleft();
       destroytest();
+      decayTimeTest();
+      decayTimeDeathTest();
 
    }
 
@@ -213,4 +215,33 @@ private:
       assert(satellites[2].getPosition().getMetersX() == 10.0 && satellites[2].getPosition().getMetersY() == 42164000.0);
       assert(satellites[3].getPosition().getMetersX() == 0.0 && satellites[3].getPosition().getMetersY() == 42163990.0);
     }   // teardown
+
+
+    void decayTimeTest()
+    {
+      // setup
+      Satellite satellite;
+      satellite.decayTime = 2;
+      
+      // exercise
+      satellite.updateDecayTime();
+
+      // verify
+      assert(satellite.decayTime == 1);
+    }
+
+    void decayTimeDeathTest()
+    {
+       // setup
+       Satellite satellite;
+       satellite.dead = false;
+       satellite.decayTime = 1;
+
+       // exercise
+       satellite.updateDecayTime();
+
+       // verify
+       assert(satellite.decayTime == 0);
+       assert(satellite.dead == true);
+    }
 };

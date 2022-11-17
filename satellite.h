@@ -24,21 +24,24 @@ class Satellite
    friend class StubSatellite;
 
 protected:
-   //ADD VELOCITY
    Position pos;
    // ADD DIRECTION
-   float angularVelocity;
+   double angularVelocity;
    bool dead;
-   float radius;
+   double radius;
    Velocity velocity;
+   double decayTime;
 
 public:
    //Methods
    Satellite(){}
    Satellite(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y);}
-   virtual float getRadius() { return radius; }
+   virtual double getRadius() { return radius; }
    virtual bool isDead() { return dead; }
    virtual Position getPosition() { return pos; }
+   void updateDecayTime();
+   double getDecayTime() { return decayTime; }
+
    virtual void draw(){}
    virtual void spawnFragments(vector<Satellite>& satellites);
    virtual void move(double time);

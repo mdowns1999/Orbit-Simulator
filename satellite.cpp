@@ -11,6 +11,16 @@
 
 
 
+void Satellite::updateDecayTime()
+{
+   decayTime -= 1;
+
+   if (decayTime <= 0)
+   {
+      dead = true;
+   }
+}
+
 void Satellite::spawnFragments(vector<Satellite> &satellites)
 {
    Fragment fragment1(pos.getMetersX()      , pos.getMetersY() + 10 );
