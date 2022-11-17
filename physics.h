@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Physics
+ * Author:
+ *   Ben, Star, and Mike
+ * Summary:
+ *
+ ************************************************************************/
 #pragma once
 #include <cmath>
 #define _USE_MATH_DEFINES //PI
