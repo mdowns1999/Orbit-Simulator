@@ -14,98 +14,12 @@
 #include <cassert>        // for ASSERT
 #include "uiInteract.h"   // for INTERFACE
 #include "uiDraw.h"       // for RANDOM and DRAW*
-#include "position.h"     // for POINT
+#include "position.h"     // for 
 #include "test.h"
 #include <cmath>
 #define _USE_MATH_DEFINES //PI
 #include <math.h>
 using namespace std;
-
-
-
-///***********************************************************************
-// * Velocity COMPUTE ANGLE
-// * Calculates the angle based on the velocity.
-// ************************************************************************/
-//double computeAngle(double x, double y)
-//{
-//   return atan2(x, y) * 180 / M_PI;
-//}
-
-
-/***************************************************
-* CONVERT HEIGHT ABOVE EARTH
-* Find the Height above the earth.
-****************************************************/
-double computeHeightAboveEarth(double x, double y, double RADIUS)
-{
-   return sqrt((x * x) + (y * y)) - RADIUS;
-}
-
-/***********************************************
-* GRAVITY HEIGHT
-* Find the gravity at a give height.
-***********************************************/
-double gravityHeight(double RADIUS, double HEIGHT, double GRAVITY)
-{
-   return GRAVITY * ((RADIUS / (RADIUS + HEIGHT)) * (RADIUS / (RADIUS + HEIGHT)));
-}
-
-///***********************************************
-//* COMPUTE HORIZONTAL COMPONENT
-//* Find the horizontal component of a velocity or acceleration.
-//* The equation is:
-//*     sin(a) = x / total
-//***********************************************/
-//double computeHorizontalComp(double angle, double gravityHeight)
-//{
-//   // Compute x componenent of acceleration
-//   // a is the radians from the degreesToRadians
-//   // total is the output of computeAcceleration
-//   return sin(angle) * gravityHeight;
-//}
-//
-///***********************************************
-// * COMPUTE VERTICAL COMPONENT
-// * Find the vertical component of a velocity or acceleration.
-// * The equation is:
-// *     cos(a) = y / total
-// ***********************************************/
-//double computeVerticalComp(double angle, double gravityHeight)
-//{
-//   // Compute y componenent of acceleration
-//   return (cos(angle) * gravityHeight);
-//}
-
-
-///***********************************************
-//* CONSTANT ACCELERATION
-//* Find the horizontal/vertical change of velocity.
-//* The equation is:
-//*   Horizontal:
-//*       dx = dx + ddx * t
-//*   Vertical:
-//*       dy = dy + ddy * t
-//***********************************************/
-//double ConstantAcceleration(double ds, double dds, double TIME)
-//{
-//   return ds + (dds * TIME);
-//}
-
-
-/***********************************************
-* DISTANCE FORMULA
-* Finding the new position.
-* The equation is:
-*   Horizontal:
-*       x = x + dx * t + .5 * ddx * t^2
-*   Vertical:
-*       y = y + dy * t + .5 * ddy * t^2
-***********************************************/
-double distanceFormula(double s, double ds, double dds, double TIME)
-{
-   return s + (ds * TIME) + (.5 * dds * (TIME * TIME));
-}
 
 
 
@@ -156,6 +70,7 @@ public:
    double gHeight;
 };
 
+
 /*************************************
  * All the interesting work happens here, when
  * I get called back from OpenGL to draw a frame.
@@ -173,9 +88,9 @@ void callBack(const Interface* pUI, void* p)
    //
    // perform all the game logic
    //
-   const double TIME = 48;
+   /*const double TIME = 48;
    const double RADIUS = 6378000.0;
-   const double GRAVITY = -9.8067;
+   const double GRAVITY = -9.8067;*/
    double ddx = 0;
    double ddy = 0;
 

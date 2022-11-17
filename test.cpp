@@ -19,7 +19,7 @@
 void testRunner()
 {
    //TestPosition().run();
-   //testSatellite().run();
+   testSatellite().run();
    testAngle().run();
 
    cout << "All Tests have passed.  Success!!!" << endl;

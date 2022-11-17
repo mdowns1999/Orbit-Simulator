@@ -17,15 +17,6 @@
 //    return sqrt((dx * dx) + (dy * dy));
 // }
 
-/***********************************************************************
- * Velocity COMPUTE ANGLE
- * Calculates the angle based on the velocity.
- ************************************************************************/
-double Velocity::computeAngle() const
-{
-    //atan2(x, y) * 180 / M_PI;
-   return atan2(dx, dy);
-}
 
 /***********************************************************************
  * Velocity UPDATE VELOCITY

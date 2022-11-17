@@ -9,6 +9,9 @@
 #pragma once
 #include "position.h"
 #include "uiInteract.h"
+#include "Velocity.h"
+#include "angle.h"
+#include "physic.h"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -27,16 +30,17 @@ private:
    float angularVelocity;
    bool dead;
    float radius;
+   Velocity velocity;
 
 public:
    //Methods
    Satellite(){}
-   float getRadius() { return radius; }
-   bool isDead() { return dead; }
-   Position getPosition() { return pos; }
+   virtual float getRadius() { return radius; }
+   virtual bool isDead() { return dead; }
+   virtual Position getPosition() { return pos; }
    virtual void draw(){};
-   void destroy(vector<Satellite> &satellites, vector<Satellite> &decay);
-   void move(float time);
+   virtual void destroy(vector<Satellite> &satellites, vector<Satellite> &decay);
+   virtual void move(double time);
    //void input(Interface ui);
 
 };

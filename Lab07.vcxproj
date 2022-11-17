@@ -143,7 +143,6 @@
     <ClCompile Include="angle.cpp" />
     <ClCompile Include="demo.cpp" />
     <ClCompile Include="Lab07.cpp" />
-    <ClCompile Include="math.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="satellite.cpp" />
     <ClCompile Include="ship.cpp" />
@@ -155,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="Acceleration.h" />
     <ClInclude Include="angle.h" />
+    <ClInclude Include="physic.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="satellite.h" />
     <ClInclude Include="ship.h" />
