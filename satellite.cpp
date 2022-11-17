@@ -7,11 +7,20 @@
  *    This is is the parent class for all the different satellites
  ************************************************************************/
 #include "satellite.h"
+#include "fragment.h"
 
 
 
-void Satellite::destroy(vector<Satellite>& satellites, vector<Satellite>& decay)
+void Satellite::spawnFragments(vector<Satellite> &satellites)
 {
+   Fragment fragment1(pos.getMetersX()      , pos.getMetersY() + 10 );
+   Fragment fragment2(pos.getMetersX() + 10 , pos.getMetersY()      );
+   Fragment fragment3(pos.getMetersX()      , pos.getMetersY() - 10 );
+
+   satellites.push_back(fragment1);
+   satellites.push_back(fragment2);
+   satellites.push_back(fragment3);
+
 
 }
 

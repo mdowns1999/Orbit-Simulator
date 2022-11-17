@@ -47,6 +47,7 @@ class testSatellite
 public:
    void run()
    {
+      nonDefaultConstructorTest();
       isdeadtest();
       getradiustest();
       getpositiontest();
@@ -54,7 +55,7 @@ public:
       movetestfallup();
       movetestfallright();
       movetestfallleft();
-      //destroytest();
+      destroytest();
 
    }
 
@@ -67,6 +68,17 @@ private:
       double difference = value - test;
       return (difference >= -tolerence) && (difference <= tolerence);
    }
+
+   void nonDefaultConstructorTest()
+   {
+       //  setup
+       // exercise
+       Satellite satellite(0.0, 42164000.0);
+       // verify
+       assert(satellite.getPosition().getMetersX() == 0.0);
+       assert(satellite.getPosition().getMetersY() == 42164000.0);
+
+   }//teardown
    
 
     void isdeadtest() 
@@ -186,17 +198,19 @@ private:
    }   // teardown
 
 
-   // void destroytest() const
-   // {
-   //   // setup
-   //   Satellite satellite;
-   //   vector<satellite> satellites;
-   //   satellites.push_back(satellite);
-   //   vector<satellite> decay;
-   //   // exercise
-   //   satellite.destroy(satellites, decay);
-   //   // verify
-   //   assert(satellites.size() == 0);
-   //   assert(decay.size() == 3);
-   // }   // teardown
+    void destroytest() const
+    {
+      // setup
+      Satellite satellite(0.0, 42164000.0);
+      vector<Satellite> satellites;
+      satellites.push_back(satellite);
+      vector<Satellite> decay;
+      // exercise
+      satellite.spawnFragments(satellites);
+      // verify
+      assert(satellites.size() == 4);
+      assert(satellites[1].getPosition().getMetersX() == 0.0 && satellites[1].getPosition().getMetersY() == 42164010.0);
+      assert(satellites[2].getPosition().getMetersX() == 10.0 && satellites[2].getPosition().getMetersY() == 42164000.0);
+      assert(satellites[3].getPosition().getMetersX() == 0.0 && satellites[3].getPosition().getMetersY() == 42163990.0);
+    }   // teardown
 };

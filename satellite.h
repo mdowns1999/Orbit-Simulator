@@ -23,7 +23,7 @@ class Satellite
    friend class DummySatellite;
    friend class StubSatellite;
 
-private:
+protected:
    //ADD VELOCITY
    Position pos;
    // ADD DIRECTION
@@ -35,11 +35,12 @@ private:
 public:
    //Methods
    Satellite(){}
+   Satellite(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y);}
    virtual float getRadius() { return radius; }
    virtual bool isDead() { return dead; }
    virtual Position getPosition() { return pos; }
-   virtual void draw(){};
-   virtual void destroy(vector<Satellite> &satellites, vector<Satellite> &decay);
+   virtual void draw(){}
+   virtual void spawnFragments(vector<Satellite>& satellites);
    virtual void move(double time);
    //void input(Interface ui);
 
