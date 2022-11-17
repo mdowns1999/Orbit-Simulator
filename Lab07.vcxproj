@@ -156,12 +156,13 @@
     <ClInclude Include="Acceleration.h" />
     <ClInclude Include="angle.h" />
     <ClInclude Include="fragment.h" />
-    <ClInclude Include="physic.h" />
+    <ClInclude Include="physics.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="satellite.h" />
     <ClInclude Include="ship.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testAngle.h" />
+    <ClInclude Include="testPhysics.h" />
     <ClInclude Include="testPosition.h" />
     <ClInclude Include="testSatellite.h" />
     <ClInclude Include="testShip.h" />

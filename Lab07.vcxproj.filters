@@ -92,10 +92,13 @@
     <ClInclude Include="Acceleration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="physic.h">
+    <ClInclude Include="physics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fragment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testPhysics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

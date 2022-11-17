@@ -99,7 +99,7 @@ void callBack(const Interface* pUI, void* p)
 
    //double radians = convertToRadians(angle);
 
-   // Compute physics
+   // Compute physicss
    //pDemo->height = computeHeightAboveEarth(pDemo->x, pDemo->y,RADIUS);
    //pDemo->gHeight = gravityHeight(RADIUS, pDemo->height, GRAVITY);
    //ddx = computeHorizontalComp(radians, pDemo->gHeight);

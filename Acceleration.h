@@ -31,3 +31,4 @@ public:
    double computeVerticalComp(double angle, double velocity) const;
 };
 
+

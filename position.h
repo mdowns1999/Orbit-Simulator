@@ -10,7 +10,7 @@
 
 
 #pragma once
-#include "physic.h"
+#include "physics.h"
 #include <iostream> 
 #include <cmath>
 

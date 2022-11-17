@@ -10,6 +10,7 @@
 #include "test.h"
 #include "testPosition.h"
 #include "testSatellite.h"
+#include "testPhysics.h"
 #include "testAngle.h"
 
 /*****************************************************************
@@ -20,6 +21,7 @@ void testRunner()
 {
    //TestPosition().run();
    testSatellite().run();
+   testPhysics().run();
    testAngle().run();
 
    cout << "All Tests have passed.  Success!!!" << endl;

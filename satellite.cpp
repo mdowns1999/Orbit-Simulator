@@ -39,7 +39,7 @@ void Satellite::move(double time)
 {  
 
    Acceleration accel;
-   // Compute physics
+   // Compute physicss
    double gravity = gravityDirection(pos.getMetersX(), pos.getMetersY());
 
    double height = computeHeightAboveEarth(pos.getMetersX(), pos.getMetersY());

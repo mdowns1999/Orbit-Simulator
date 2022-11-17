@@ -11,7 +11,7 @@
 #include "uiInteract.h"
 #include "Velocity.h"
 #include "angle.h"
-#include "physic.h"
+#include "physics.h"
 #include <iostream>
 #include <vector>
 using namespace std;
