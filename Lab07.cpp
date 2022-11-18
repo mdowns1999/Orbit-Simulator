@@ -19,56 +19,9 @@
 #include <cmath>
 #define _USE_MATH_DEFINES //PI
 #include <math.h>
+#include "game.h"
 using namespace std;
 
-
-
-/*************************************************************************
- * Demo
- * Test structure to capture the LM that will move around the screen
- *************************************************************************/
-class Demo
-{
-public:
-   Demo(Position ptUpperRight) :
-      ptUpperRight(ptUpperRight)
-   {
-
-      ptGPS.setMeters(0.0, 42164000.0);
-
-      ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-
-      angleShip = 0.0;
-      angleEarth = 0.0;
-      phaseStar = 0;
-      x = ptGPS.getMetersX();
-      y = ptGPS.getMetersY();
-      dx = -3100.0;
-      dy = 0.0;
-   }
-
-   Position ptHubble;
-   Position ptSputnik;
-   Position ptStarlink;
-   Position ptCrewDragon;
-   Position ptShip;
-   Position ptGPS;
-   Position ptStar;
-   Position ptUpperRight;
-
-   unsigned char phaseStar;
-
-   double angleShip;
-   double angleEarth;
-
-   double x;
-   double y;
-   double dx;
-   double dy;
-   double height;
-   double gHeight;
-};
 
 
 /*************************************
@@ -82,7 +35,7 @@ void callBack(const Interface* pUI, void* p)
 {
    // the first step is to cast the void pointer into a game object. This
    // is the first step of every single callback function in OpenGL. 
-   Demo* pDemo = (Demo*)p;
+   Game* pGame = (Game*)p;
 
 
    //
@@ -110,31 +63,33 @@ void callBack(const Interface* pUI, void* p)
    //pDemo->y = distanceFormula(pDemo->y, pDemo->dy, ddy, TIME);
 
    // Set the New Meters
-   pDemo->ptGPS.setMeters(pDemo->x, pDemo->y);
-
-  
-   // rotate the earth
-   pDemo->angleEarth += 0.01;
-   pDemo->angleShip += 0.02;
-   pDemo->phaseStar++;
-
-   //
-   // draw everything
-   //
-
-   Position pt;
-
-   drawGPS       (pDemo->ptGPS,        pDemo->angleShip);
-   pt.setPixelsX(pDemo->ptGPS.getPixelsX() + 20);
-   pt.setPixelsY(pDemo->ptGPS.getPixelsY() + 20);
+   //pDemo->ptGPS.setMeters(pDemo->x, pDemo->y);
 
 
-   // draw a single star
-   drawStar(pDemo->ptStar, pDemo->phaseStar);
+   //// rotate the earth
+   //pDemo->angleEarth += 0.01;
+   //pDemo->angleShip += 0.02;
+   //pDemo->phaseStar++;
 
-   // draw the earth
-   pt.setMeters(0.0, 0.0);
-   drawEarth(pt, pDemo->angleEarth);
+   ////
+   //// draw everything
+   ////
+   pGame->update();
+   pGame->display();
+
+   //Position pt;
+
+   //drawGPS(pDemo->ptGPS, pDemo->angleShip);
+   //pt.setPixelsX(pDemo->ptGPS.getPixelsX() + 20);
+   //pt.setPixelsY(pDemo->ptGPS.getPixelsY() + 20);
+
+
+   //// draw a single star
+   //drawStar(pDemo->ptStar, pDemo->phaseStar);
+
+   //// draw the earth
+   //pt.setMeters(0.0, 0.0);
+   //drawEarth(pt, pDemo->angleEarth);
 }
 
 double Position::metersFromPixels = 40.0;
@@ -159,18 +114,19 @@ int main(int argc, char** argv)
    ptUpperRight.setPixelsX(1000.0);
    ptUpperRight.setPixelsY(1000.0);
    Interface ui(0, NULL,
-      "Demo",   /* name on the window */
+      "Satellite Orbit",   /* name on the window */
       ptUpperRight);
 
    // Initialize the demo
-   Demo demo(ptUpperRight);
+   Game game(ptUpperRight);
 
    //Run Unit Tests
    testRunner();
 
    // set everything into action
-   //ui.run(callBack, &demo);
+   ui.run(callBack, &game);
 
    return 0;
 }
+
 

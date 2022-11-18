@@ -12,12 +12,12 @@
 #include "uiDraw.h"       // for DRAW*
 class Earth
 {
+public:
    //Member Variables
-   ogstream gout;
-   double angleEarth = 0.0;
+   //double angleEarth = 0.0;
 
    Earth();
 
-   void drawEarth() {}
+   void displayEarth(double angleEarth);
 };
 
