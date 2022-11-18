@@ -19,7 +19,7 @@
  ****************************************************************/
 void testRunner()
 {
-   //TestPosition().run();
+   TestPosition().run();
    testSatellite().run();
    testPhysics().run();
    testAngle().run();

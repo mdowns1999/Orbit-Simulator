@@ -37,59 +37,10 @@ void callBack(const Interface* pUI, void* p)
    // is the first step of every single callback function in OpenGL. 
    Game* pGame = (Game*)p;
 
-
-   //
-   // perform all the game logic
-   //
-   /*const double TIME = 48;
-   const double RADIUS = 6378000.0;
-   const double GRAVITY = -9.8067;*/
-   double ddx = 0;
-   double ddy = 0;
-
-
-   //int angle = computeAngle(pDemo->x, pDemo->y);
-
-   //double radians = convertToRadians(angle);
-
-   // Compute physicss
-   //pDemo->height = computeHeightAboveEarth(pDemo->x, pDemo->y,RADIUS);
-   //pDemo->gHeight = gravityHeight(RADIUS, pDemo->height, GRAVITY);
-   //ddx = computeHorizontalComp(radians, pDemo->gHeight);
-   //ddy = computeVerticalComp(radians, pDemo->gHeight);
-   //pDemo->dx = ConstantAcceleration(pDemo->dx, ddx, TIME);
-   //pDemo->dy = ConstantAcceleration(pDemo->dy, ddy, TIME);
-   //pDemo->x = distanceFormula(pDemo->x, pDemo->dx, ddx, TIME);
-   //pDemo->y = distanceFormula(pDemo->y, pDemo->dy, ddy, TIME);
-
-   // Set the New Meters
-   //pDemo->ptGPS.setMeters(pDemo->x, pDemo->y);
-
-
-   //// rotate the earth
-   //pDemo->angleEarth += 0.01;
-   //pDemo->angleShip += 0.02;
-   //pDemo->phaseStar++;
-
-   ////
-   //// draw everything
-   ////
    pGame->update();
    pGame->display();
 
-   //Position pt;
 
-   //drawGPS(pDemo->ptGPS, pDemo->angleShip);
-   //pt.setPixelsX(pDemo->ptGPS.getPixelsX() + 20);
-   //pt.setPixelsY(pDemo->ptGPS.getPixelsY() + 20);
-
-
-   //// draw a single star
-   //drawStar(pDemo->ptStar, pDemo->phaseStar);
-
-   //// draw the earth
-   //pt.setMeters(0.0, 0.0);
-   //drawEarth(pt, pDemo->angleEarth);
 }
 
 double Position::metersFromPixels = 40.0;
