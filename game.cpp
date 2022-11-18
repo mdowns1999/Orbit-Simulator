@@ -12,7 +12,7 @@ void Game::update()
 {
    Position pt;
 
-   angleEarth += 0.01;
+   angleEarth -= 0.01;
 
 }
 
