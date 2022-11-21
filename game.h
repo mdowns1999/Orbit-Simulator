@@ -11,27 +11,10 @@
 #include "uiDraw.h"       // for RANDOM and DRAW*
 #include "uiInteract.h"
 #include "position.h"
-//#include "earth.h"
-//class Game
-//{
-//   //Member Variables
-//   
-//   
-//   //Constructor
-//   Game();
-//
-//   //General Game Functions
-//   //void input();
-//   //void update();
-//   //void display();
-//   //void collision();
-//};
-
-
-
+#include "gps.h"
 
 /*************************************************************************
- * Demo
+ * Game
  * Test structure to capture the LM that will move around the screen
  *************************************************************************/
 class Game
@@ -40,12 +23,21 @@ public:
    Game(Position ptUpperRight) :
       ptUpperRight(ptUpperRight)
    {
-
+      
+      //GPSpt.setMeters(0.0, 6378000.0);
+      
+      //GPS gps(0.0, 35786000.0);
       //ptGPS.setMeters(0.0, 42164000.0);
 
       //ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
       //ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-
+      GPSpt.setPixelsX(1);
+      GPSpt.setPixelsY(1);
+      cout << "X: " << GPSpt.getPixelsX() << endl;
+      cout << "Y: " << GPSpt.getPixelsY() << endl;
+      //cout << "X: " << GPSpt.getMetersX() << endl;
+      //cout << "Y: " << GPSpt.getMetersY() << endl;
+      gps.setPosition(GPSpt);
       //angleShip = 0.0;
       angleEarth = 0.0;
       //phaseStar = 0;
@@ -54,6 +46,9 @@ public:
       //dx = -3100.0;
       //dy = 0.0;
    }
+
+   GPS gps;
+   Position GPSpt;
 
    //General Game Methods
    void input();
@@ -70,6 +65,7 @@ public:
    //Position ptGPS;
    //Position ptStar;
    Position ptUpperRight;
+   //Position ptGPS;
    //Earth earth;
 
    unsigned char phaseStar;

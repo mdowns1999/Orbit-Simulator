@@ -39,6 +39,7 @@ public:
    virtual double getRadius() { return radius; }
    virtual bool isDead() { return dead; }
    virtual Position getPosition() { return pos; }
+   virtual void setPosition(Position position) { pos = position; }
    void updateDecayTime();
    double getDecayTime() { return decayTime; }
 

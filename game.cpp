@@ -19,10 +19,17 @@ void Game::update()
 void Game::display()
 {
    Position pt;
+   Position pt2;
 
    // draw the earth
     //earth.displayEarth(angleEarth);
 
    pt.setMeters(0.0, 0.0);
    drawEarth(pt, angleEarth);
+
+   gps.draw();
+   
+ 
+
 }
+

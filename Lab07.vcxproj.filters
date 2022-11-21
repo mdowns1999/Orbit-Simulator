@@ -84,9 +84,6 @@
     <ClCompile Include="dragonpart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="earth.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -174,9 +171,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dragonpart.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="earth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">

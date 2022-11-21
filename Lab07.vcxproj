@@ -144,7 +144,6 @@
     <ClCompile Include="demo.cpp" />
     <ClCompile Include="dragon.cpp" />
     <ClCompile Include="dragonpart.cpp" />
-    <ClCompile Include="earth.cpp" />
     <ClCompile Include="fragment.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gps.cpp" />
@@ -171,7 +170,6 @@
     <ClInclude Include="angle.h" />
     <ClInclude Include="dragon.h" />
     <ClInclude Include="dragonpart.h" />
-    <ClInclude Include="earth.h" />
     <ClInclude Include="fragment.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gps.h" />
