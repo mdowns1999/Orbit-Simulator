@@ -43,7 +43,7 @@ public:
    void updateDecayTime();
    double getDecayTime() { return decayTime; }
 
-   virtual void draw(){}
+   virtual void draw() const {}
    virtual void spawnFragments(vector<Satellite>& satellites);
    virtual void move(double time);
    //void input(Interface ui);

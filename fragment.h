@@ -22,7 +22,7 @@ class Fragment : public Satellite
         virtual double getRadius() { return radius; }
         virtual Position getPosition() { return pos; }
         virtual bool isDead() { return dead; }
-        virtual void draw(){}
+        virtual void draw() const {}
         virtual void move(double time) {}
 
 };

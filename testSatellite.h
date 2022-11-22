@@ -22,7 +22,7 @@ public:
    virtual float getradius() { assert(false); return 0.0; }
    virtual bool isdead() { assert(false); return false; }
    virtual Position getposition() { assert(false); Position pos; return pos; }
-   virtual void draw() { assert(false); }
+   virtual void  draw() const { assert(false); }
    virtual void destroy(vector<dummysatellite>& satellites, vector<dummysatellite>& decay) { assert(false); }
    virtual void move(float time) { assert(false); }
    virtual void input(Interface ui) { assert(false); }

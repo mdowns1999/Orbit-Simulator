@@ -25,18 +25,15 @@ public:
    {
       
       //GPSpt.setMeters(0.0, 6378000.0);
-      
-      //GPS gps(0.0, 35786000.0);
       //ptGPS.setMeters(0.0, 42164000.0);
 
       //ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
       //ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-      GPSpt.setPixelsX(1);
-      GPSpt.setPixelsY(1);
-      cout << "X: " << GPSpt.getPixelsX() << endl;
-      cout << "Y: " << GPSpt.getPixelsY() << endl;
-      //cout << "X: " << GPSpt.getMetersX() << endl;
-      //cout << "Y: " << GPSpt.getMetersY() << endl;
+      //GPSpt.setPixelsX(1);
+     // GPSpt.setPixelsY(1);
+      GPSpt.setMetersX(0.0);
+      GPSpt.setMetersY(35786000.0);
+      //GPS gps(0.0, 35786000.0);
       gps.setPosition(GPSpt);
       //angleShip = 0.0;
       angleEarth = 0.0;
@@ -47,8 +44,7 @@ public:
       //dy = 0.0;
    }
 
-   GPS gps;
-   Position GPSpt;
+   
 
    //General Game Methods
    void input();
@@ -67,6 +63,8 @@ public:
    Position ptUpperRight;
    //Position ptGPS;
    //Earth earth;
+   GPS gps;
+   Position GPSpt;
 
    unsigned char phaseStar;
 

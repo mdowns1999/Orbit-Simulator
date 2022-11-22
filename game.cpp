@@ -10,7 +10,7 @@
 #include "game.h"
 void Game::update()
 {
-   Position pt;
+   //Position pt;
 
    angleEarth -= 0.01;
 
@@ -27,8 +27,8 @@ void Game::display()
    pt.setMeters(0.0, 0.0);
    drawEarth(pt, angleEarth);
 
+
    gps.draw();
-   
  
 
 }
