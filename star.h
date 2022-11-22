@@ -11,13 +11,17 @@
 #include "position.h"
 class Star
 {
+public:
    //Member Variables
-   char phase;
+   unsigned char phaseStar;
    Position position;
 
-   Star();
+   Star(){};
+   Star(Position position, char phase) { this->position = position; phaseStar = phase;};
 
    void reset(double width, double height);
-   void drawStars();
+   void drawStars() { cout << "Star" << endl; drawStar(position, phaseStar); }
+   void updatePhase() {phaseStar++;}
+   
 };
 

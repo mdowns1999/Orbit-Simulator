@@ -15,6 +15,7 @@ public:
    // constructors
    Velocity() : dx(0.0), dy(0.0) {};
    Velocity(double newDx, double newDy) { dx = newDx; dy = newDy; } 
+   Velocity& operator = (const Velocity& vel);
 
    // getters
    double getDX() const { return dx; }

@@ -12,6 +12,8 @@
 #include "uiInteract.h"
 #include "position.h"
 #include "gps.h"
+#include "star.h"
+#include <vector>
 
 /*************************************************************************
  * Game
@@ -23,25 +25,29 @@ public:
    Game(Position ptUpperRight) :
       ptUpperRight(ptUpperRight)
    {
-      
-      //GPSpt.setMeters(0.0, 6378000.0);
-      //ptGPS.setMeters(0.0, 42164000.0);
 
-      //ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      //ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-      //GPSpt.setPixelsX(1);
-     // GPSpt.setPixelsY(1);
-      GPSpt.setMetersX(0.0);
-      GPSpt.setMetersY(35786000.0);
-      //GPS gps(0.0, 35786000.0);
-      gps.setPosition(GPSpt);
-      //angleShip = 0.0;
+      GPS* pGPS1 = new GPS(0.0, 32164000.0);
+      GPS* pGPS2 = new GPS(0.0, -32164000.0);
+      Velocity vel1(-3100.0, 0.0);
+      Velocity vel2(3100.0, 0.0);
+      pGPS1->setVelocity(vel1);
+      pGPS2->setVelocity(vel2);
+      pSatellites.push_back(pGPS1);
+      pSatellites.push_back(pGPS2);
       angleEarth = 0.0;
-      //phaseStar = 0;
-      //x = ptGPS.getMetersX();
-      //y = ptGPS.getMetersY();
-      //dx = -3100.0;
-      //dy = 0.0;
+      for (int i = 0; i < 200; i++)
+      {
+         Position ptStar(random(-60000000.0, 60000000.0), random(-60000000.0, 60000000.0));
+         //Position ptStar(0.0, 0.0);
+         phaseStar = random(1, 224);
+         Star* pStar = new Star(ptStar, phaseStar);
+         pStars [i] = pStar;
+         cout << "I: " << i << endl;
+      }
+
+      int size = sizeof(pStars) / sizeof(Star*);
+      cout << "Size: " << size << endl;
+      
    }
 
    
@@ -52,19 +58,17 @@ public:
    void display();
    void collision();
 
+   Star star;
 
-   //Position ptHubble;
-   //Position ptSputnik;
-   //Position ptStarlink;
-   //Position ptCrewDragon;
-   //Position ptShip;
-   //Position ptGPS;
-   //Position ptStar;
+   //Set Positions
    Position ptUpperRight;
-   //Position ptGPS;
-   //Earth earth;
-   GPS gps;
-   Position GPSpt;
+   Position ptEarth;
+   
+
+   //Set up a Vector of Satellites
+   vector<Satellite *> pSatellites;
+   //vector<Star *> pStars;
+   Star* pStars[200];
 
    unsigned char phaseStar;
 

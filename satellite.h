@@ -40,6 +40,7 @@ public:
    virtual bool isDead() { return dead; }
    virtual Position getPosition() { return pos; }
    virtual void setPosition(Position position) { pos = position; }
+   virtual void setVelocity(Velocity vel) { velocity = vel;}
    void updateDecayTime();
    double getDecayTime() { return decayTime; }
 

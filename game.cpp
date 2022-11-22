@@ -10,25 +10,42 @@
 #include "game.h"
 void Game::update()
 {
-   //Position pt;
+   for (auto sat : pSatellites)
+   {
+     sat->move(48);
+   }
 
    angleEarth -= 0.01;
+   
+   for (int star = 0; star < 200; star++)
+   {
+      pStars[star]->updatePhase();
+   }
 
 }
 
 void Game::display()
 {
-   Position pt;
-   Position pt2;
-
    // draw the earth
-    //earth.displayEarth(angleEarth);
+   ptEarth.setMeters(0.0, 0.0);
+    
 
-   pt.setMeters(0.0, 0.0);
-   drawEarth(pt, angleEarth);
+   //Draw Satellites
+   for (auto sat : pSatellites)
+   {
+     sat->draw();
+   }
+
+   //Draw Stars
+   for (int star = 0; star < 200; star++)
+   {
+      pStars[star]->drawStars();
+   }
+   //Draw Earth
+   drawEarth(ptEarth, angleEarth);
 
 
-   gps.draw();
+  
  
 
 }

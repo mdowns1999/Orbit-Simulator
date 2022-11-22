@@ -27,3 +27,15 @@ void Velocity::updateVelocity(const Acceleration &accel, double time)
    dx = (dx + accel.getDDX() * time);
    dy = (dy + accel.getDDY() * time);
 }
+
+
+/******************************************
+ * VELOCITY : ASSIGNMENT
+ * Assign a point
+ *****************************************/
+Velocity& Velocity::operator = (const Velocity& vel)
+{
+   dx = vel.dx;
+   dy = vel.dy;
+   return *this;
+}

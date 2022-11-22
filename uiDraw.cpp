@@ -846,6 +846,7 @@ void drawEarth(const Position& center, double rotation)
    return;
 }
 
+
 /************************************************************************
  * DRAW STAR
  * Draw a star that twinkles
