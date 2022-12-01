@@ -28,10 +28,11 @@ protected:
    // ADD DIRECTION
    double angularVelocity;
    bool dead = false;
+   bool broken = false;
    double radius;
    Velocity velocity;
    double decayTime = 0.0;
-   double angle = 0.0;
+   double angle = 0.1;
    bool isShip = false;
    bool canDecay = false;
 
@@ -42,11 +43,14 @@ public:
    virtual double getRadius()    { return radius; }
    virtual bool isDead()         { return dead; }
    virtual void setDead()        {  dead = true; }
+   virtual bool isBroken() { return broken; }
+   virtual void setBroken() { broken = true; }
    virtual Position getPosition(){ return pos; }
    virtual void setPosition(Position position) { pos = position; }
    virtual void setVelocity(Velocity vel) { velocity = vel;}
    virtual bool getIsShip()      { return isShip;}
    virtual bool doesDecay()      { return canDecay;}
+   virtual bool updateAngle() { return angle+= 25; }
    void updateDecayTime();
    double getDecayTime()         { return decayTime; }
 

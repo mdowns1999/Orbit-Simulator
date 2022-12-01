@@ -16,7 +16,7 @@ void Satellite::updateDecayTime()
 
    if (decayTime <= 0)
    {
-      //dead = true;
+      dead = true;
    }
 }
 

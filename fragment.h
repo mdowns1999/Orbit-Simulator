@@ -19,7 +19,7 @@ class Fragment : public Satellite
     
     public:
         //Methods
-       Fragment() { decayTime = 10; }
+       Fragment() { decayTime = 6; }
         Fragment(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
         
         //Getters

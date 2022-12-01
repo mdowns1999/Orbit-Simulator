@@ -116,6 +116,7 @@ public:
 
    double angleShip;
    double angleEarth;
+   int timeToBreak = 0;
 
    double x;
    double y;

@@ -15,7 +15,7 @@ public:
    Starlink() {}
    Starlink(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
    void  draw()  const {
-      drawStarlink(pos, 0.1);
+      drawStarlink(pos, angle);
    }
 };
 

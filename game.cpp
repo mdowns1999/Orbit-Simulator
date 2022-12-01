@@ -31,6 +31,7 @@ void Game::update(const Interface* pUI)
    collision();
    destroy();
 
+   //Move Satellites
    for (auto sat : pSatellites)
    {
 
@@ -45,14 +46,64 @@ void Game::update(const Interface* pUI)
           
    }
 
+   //Update Angle of Earth
    angleEarth -= 0.01;
    
+   //Update Stars
    for (int star = 0; star < 200; star++)
    {
       pStars[star]->updatePhase();
    }
 
-   
+   //Randomly break a Satellite
+   if (timeToBreak > 100)
+   {
+      double randomPosition = random(0, pSatellites.size());
+      cout << randomPosition << endl;
+
+      list<Satellite*>::iterator it = pSatellites.begin();
+      advance(it, randomPosition);
+      if (!(*it)->getIsShip() && !(*it)->doesDecay())
+      {
+         (*it)->setBroken();
+
+         //cout << (*it)->isBroken() << endl;
+
+         timeToBreak = 0;
+      }
+   }
+   else
+   {
+      timeToBreak++;
+   }
+
+   //Spin Broken Parts and Update Decay Time
+   for (auto sat : pSatellites)
+   {
+      if (sat->isBroken())
+      {
+         sat->updateAngle();
+      }
+
+   }
+
+   //for (auto it = pSatellites.begin(); it != pSatellites.end(); )
+   //{
+   //   if ((*it)->getDecayTime() == 0)
+   //   {
+   //      delete* it;
+   //      it = pSatellites.erase(it);
+   //   }
+   //   else
+   //   {
+   //      ++it;
+   //      if ((*it)->doesDecay())
+   //      {
+   //         (*it)->updateDecayTime();
+   //      }
+   //   }
+   //}
+  
 
 }
 
