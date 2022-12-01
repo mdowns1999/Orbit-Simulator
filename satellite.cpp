@@ -10,28 +10,28 @@
 #include "fragment.h"
 
 
-
 void Satellite::updateDecayTime()
 {
    decayTime -= 1;
 
    if (decayTime <= 0)
    {
-      dead = true;
+      //dead = true;
    }
 }
 
-void Satellite::spawnFragments(vector<Satellite> &satellites)
+void Satellite::spawnFragments(list<Satellite*>& pSatellites)
 {
-   Fragment fragment1(pos.getMetersX()      , pos.getMetersY() + 10 );
-   Fragment fragment2(pos.getMetersX() + 10 , pos.getMetersY()      );
-   Fragment fragment3(pos.getMetersX()      , pos.getMetersY() - 10 );
+   //cout << "SPAWN" << endl;
+   Fragment*  pFragment1 = new Fragment(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + 3000000 + random(-6000000.0, 6000000.0));
+   
+   Fragment*  pFragment2 = new Fragment(pos.getMetersX() + 3000000 + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0));
+   Fragment*  pFragment3 = new Fragment(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() - 3000000 + random(-6000000.0, 6000000.0));
 
-   satellites.push_back(fragment1);
-   satellites.push_back(fragment2);
-   satellites.push_back(fragment3);
-
-
+   pSatellites.push_back(pFragment1);
+   //cout << "Spawned" << endl;
+   pSatellites.push_back(pFragment2);
+   pSatellites.push_back(pFragment3);
 }
 
 
@@ -48,7 +48,6 @@ void Satellite::move(double time)
 
    accel.setDDX(accel.computeHorizontalComp(gravity, gHeight));
    accel.setDDY(accel.computeVerticalComp(gravity, gHeight));
-
 
    velocity.updateVelocity(accel, time);
  

@@ -13,7 +13,7 @@
 #include "angle.h"
 #include "physics.h"
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 class Satellite
@@ -27,26 +27,36 @@ protected:
    Position pos;
    // ADD DIRECTION
    double angularVelocity;
-   bool dead;
+   bool dead = false;
    double radius;
    Velocity velocity;
-   double decayTime;
+   double decayTime = 0.0;
+   double angle = 0.0;
+   bool isShip = false;
+   bool canDecay = false;
 
 public:
    //Methods
    Satellite(){}
-   Satellite(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y);}
-   virtual double getRadius() { return radius; }
-   virtual bool isDead() { return dead; }
-   virtual Position getPosition() { return pos; }
+   Satellite(double x, double y) {pos.setMetersX(x);  pos.setMetersY(y);}
+   virtual double getRadius()    { return radius; }
+   virtual bool isDead()         { return dead; }
+   virtual void setDead()        {  dead = true; }
+   virtual Position getPosition(){ return pos; }
    virtual void setPosition(Position position) { pos = position; }
    virtual void setVelocity(Velocity vel) { velocity = vel;}
+   virtual bool getIsShip()      { return isShip;}
+   virtual bool doesDecay()      { return canDecay;}
    void updateDecayTime();
-   double getDecayTime() { return decayTime; }
+   double getDecayTime()         { return decayTime; }
+
+   virtual void satelliteInput(const Interface* pUI) {}
 
    virtual void draw() const {}
-   virtual void spawnFragments(vector<Satellite>& satellites);
+   virtual void drawSpaceShip(const Interface *pUI) const {}
+   virtual void spawnFragments(list<Satellite*> &pSatellites);
    virtual void move(double time);
+   virtual void moveShip(double time, const Interface* pUI){}
    //void input(Interface ui);
 
 };

@@ -10,13 +10,24 @@
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"
+#include "uiInteract.h" // for INTERFACE
 
 class Ship : public Satellite
 {
-   Ship() {}
-   Ship(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
-   void  draw()  const {
-      drawShip(pos, 0.01);
+private:
+   //Interface UI;
+   bool isShip = true;
+
+
+public:
+
+   Ship() {isShip = true; }
+   Ship(double x, double y) {isShip = true; pos.setMetersX(x);  pos.setMetersY(y); }
+   void  drawSpaceShip(const Interface *pUI)  const {
+      drawShip(pos, angle, pUI->isUp());
    }
+   bool getIsShip() { return isShip; }
+   void moveShip(double time, const Interface* pUI);
+   void satelliteInput(const Interface * pUI);
 };
 

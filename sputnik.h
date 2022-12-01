@@ -8,8 +8,14 @@
  ************************************************************************/
 #pragma once
 #include "satellite.h"
-class Sputnik :
-    public Satellite
+#include "uiDraw.h"
+class Sputnik : public Satellite
 {
+public:
+   Sputnik() {}
+   Sputnik(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
+   void  draw()  const {
+      drawSputnik(pos, 0.1);
+   }
 };
 

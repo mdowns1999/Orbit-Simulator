@@ -6,11 +6,17 @@
  * Summary:
  *
  ************************************************************************/
-
 #pragma once
 #include "satellite.h"
-class StarLink :
-    public Satellite
+#include "uiDraw.h"
+class Starlink : public Satellite
 {
+public:
+   Starlink() {}
+   Starlink(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
+   void  draw()  const {
+      drawStarlink(pos, 0.1);
+   }
 };
+
 

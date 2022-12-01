@@ -15,6 +15,6 @@ public:
    GPS() {}
    GPS(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
    void  draw()  const {
-      drawGPS(pos, 0.01); }
+      drawGPS(pos, 0.1); }
 };
 

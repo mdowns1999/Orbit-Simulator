@@ -9,8 +9,14 @@
 
 #pragma once
 #include "satellite.h"
-class Dragon :
-    public Satellite
+#include "uiDraw.h"
+class Dragon : public Satellite
 {
+public:
+   Dragon() {}
+   Dragon(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
+   void  draw()  const {
+      drawCrewDragon(pos, 0.1);
+   }
 };
 

@@ -20,7 +20,7 @@ public:
    Star(Position position, char phase) { this->position = position; phaseStar = phase;};
 
    void reset(double width, double height);
-   void drawStars() { cout << "Star" << endl; drawStar(position, phaseStar); }
+   void drawStars() { drawStar(position, phaseStar); }
    void updatePhase() {phaseStar++;}
    
 };
