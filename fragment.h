@@ -4,7 +4,7 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- *
+ * Debrie that floats in space
  ************************************************************************/
 
 #pragma once
@@ -20,13 +20,13 @@ class Fragment : public Satellite
     public:
         //Methods
        Fragment() { decayTime = 6; }
-        Fragment(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
+        Fragment(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); decayTime = 50;}
         
         //Getters
-        //virtual double getRadius() { return radius; }
-
         void draw() const { drawFragment(pos, 0.1); }
         bool doesDecay() { return canDecay;}
+        double getDecayTime() { return decayTime;}
+        void updateDecayTime() {decayTime--;}
 
 };
 

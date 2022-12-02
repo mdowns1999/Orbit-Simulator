@@ -4,11 +4,12 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- *
+ * Specifics for the Starlink satellite child class
  ************************************************************************/
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"
+#include "satellitePart.h"
 class Starlink : public Satellite
 {
 public:
@@ -17,6 +18,8 @@ public:
    void  draw()  const {
       drawStarlink(pos, angle);
    }
+
+   void spawnParts(list<Satellite*>& pSatellites);
 };
 
 

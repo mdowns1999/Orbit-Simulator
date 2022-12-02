@@ -4,7 +4,7 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- *
+ * Where all the satellites are initiallized
  ************************************************************************/
 
 #pragma once
@@ -21,10 +21,6 @@
 #include "physics.h"
 #include <list>
 
-/*************************************************************************
- * Game
- * Test structure to capture the LM that will move around the screen
- *************************************************************************/
 class Game
 {
 public:
@@ -82,11 +78,11 @@ public:
          phaseStar = random(1, 224);
          Star* pStar = new Star(ptStar, phaseStar);
          pStars [i] = pStar;
-         cout << "I: " << i << endl;
+         //cout << "I: " << i << endl;
       }
 
-      int size = sizeof(pStars) / sizeof(Star*);
-      cout << "Size: " << size << endl;
+      //int size = sizeof(pStars) / sizeof(Star*);
+      //cout << "Size: " << size << endl;
       
    }
 
@@ -108,9 +104,9 @@ public:
 
    //Set up a List of Satellites
    list<Satellite *> pSatellites;
-   //vector<Star *> pStars;
+
    Star* pStars[200];
-   //Ship ship;
+   
 
    unsigned char phaseStar;
 

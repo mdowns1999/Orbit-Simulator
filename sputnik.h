@@ -4,7 +4,7 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- *
+ * Specifics for the Sputnik satellite child class
  ************************************************************************/
 #pragma once
 #include "satellite.h"

@@ -12,6 +12,7 @@
 #include "uiDraw.h"
 #include "uiInteract.h" // for INTERFACE
 
+
 class Ship : public Satellite
 {
 private:
@@ -28,6 +29,6 @@ public:
    }
    bool getIsShip() { return isShip; }
    void moveShip(double time, const Interface* pUI);
-   void satelliteInput(const Interface * pUI);
+   void satelliteInput(const Interface * pUI, list<Satellite*> &pSatellites);
 };
 

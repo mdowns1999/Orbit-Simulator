@@ -51,17 +51,20 @@ public:
    virtual bool getIsShip()      { return isShip;}
    virtual bool doesDecay()      { return canDecay;}
    virtual bool updateAngle() { return angle+= 25; }
-   void updateDecayTime();
-   double getDecayTime()         { return decayTime; }
+   virtual double getDecayTime() { return decayTime; }
+   virtual void updateDecayTime() {decayTime--; }
 
-   virtual void satelliteInput(const Interface* pUI) {}
+   
+
+   virtual void satelliteInput(const Interface* pUI, list<Satellite*> &pSatellites) {}
 
    virtual void draw() const {}
    virtual void drawSpaceShip(const Interface *pUI) const {}
-   virtual void spawnFragments(list<Satellite*> &pSatellites);
+   virtual void spawnFragments(list<Satellite*>& pSatellites);
+   virtual void spawnProjectile(list<Satellite*>& pSatellites);
+   virtual void spawnParts(list<Satellite*>& pSatellites) {}
    virtual void move(double time);
    virtual void moveShip(double time, const Interface* pUI){}
-   //void input(Interface ui);
 
 };
 

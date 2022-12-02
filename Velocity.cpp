@@ -1,22 +1,26 @@
+/**********************************************************************
+* Source File :
+* Velocity
+* Author :
+*Mike, Ben, and Star
+* Summary :
+*Compute the Velocity for the game.
+************************************************************************/
 #include "Velocity.h"
 #include <cmath> // for sqrt
 #define _USE_MATH_DEFINES
 #include <math.h> 
 
-/***********************************************************************
- * Velocity: change in position divided by time
- ************************************************************************/
 
 /***********************************************************************
- * Velocity COMPUTE VELOCITY
- * Calculate total speed
+ * Velocity
+ * Adds velocity based off of a given angle and speed
  ************************************************************************/
-// double Velocity::computeVelocity() const
-// {
-//     //
-//    return sqrt((dx * dx) + (dy * dy));
-// }
-
+void Velocity::setVelocity(double angle, double speed)
+{
+   dx = sin(angle) * speed;
+   dy = cos(angle) * speed;
+}
 
 /***********************************************************************
  * Velocity UPDATE VELOCITY
@@ -28,6 +32,12 @@ void Velocity::updateVelocity(const Acceleration &accel, double time)
    dy = (dy + accel.getDDY() * time);
 }
 
+
+void Velocity::addVelocity(Velocity vel)
+{
+   dx += vel.getDX();
+   dy += vel.getDY();
+}
 
 /******************************************
  * VELOCITY : ASSIGNMENT

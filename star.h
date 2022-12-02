@@ -4,7 +4,7 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- *
+ * The Stars that will shine in our game.
  ************************************************************************/
 #pragma once
 #include "uiDraw.h"

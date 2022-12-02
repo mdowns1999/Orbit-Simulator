@@ -4,7 +4,8 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- *
+ * these are our standalone physics functions that we need for gravity and
+ * the height above the earth.
  ************************************************************************/
 #pragma once
 #include <cmath>
@@ -15,45 +16,35 @@ using namespace std;
 
 
 //VARIABLES:
- //const double TIME = 48;
-//const double height = 35786000.0;
 const double radius = 6378000.0;
 const double gravity = -9.8067;
-// double gHeight = 0.0;
-
-// double x = 21082000.0;
-// double y = 36515095.0;
-// double dx = -2685.0;
-// double dy = 1550.0;
-// double ddx = 0.0;
-// double ddy = 0.0;
 
 
-
- // 1: Height Above Earth
+/*********************************************
+* COMPUTE HEIGHT ABOVE EARTH
+* Find the height of an object above the earth
+**********************************************/
 inline double computeHeightAboveEarth(double x, double y)
 {
    return sqrt((x * x) + (y * y)) - radius;
 }
 
 
-// 2: Gravity Height
+/*********************************************
+* GRAVITY HEIGHT
+* The gravity based off of the height
+**********************************************/
 inline double gravityHeight(double height)
 {
    return gravity * ((radius / (radius + height)) * (radius / (radius + height)));
 }
 
+/*********************************************
+* GRAVITY DIRECTION
+* Compute the direction of gravity
+**********************************************/
 inline double gravityDirection(double x, double y)
 {
     return atan2(x,y);
 }
 
-// /***********************************************************************
-//  * Velocity COMPUTE ANGLE
-//  * Calculates the angle 
-//  ************************************************************************/
-// computeG(double x, double y) const
-// {
-//     //atan2(x, y) * 180 / M_PI;
-//    return atan2(x, y);
-// }

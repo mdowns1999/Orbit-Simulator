@@ -48,9 +48,6 @@
     <ClCompile Include="Acceleration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fragment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="star.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,22 +63,10 @@
     <ClCompile Include="dragon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sputnik.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GPSPart.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="hubblepart.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="starlinkpart.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="dragonpart.cpp">
+    <ClCompile Include="satellitePart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game.cpp">
@@ -108,9 +93,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testSatellite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="testShip.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="satellite.h">
@@ -161,16 +143,7 @@
     <ClInclude Include="projectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GPSPart.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="hubblepart.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="starlinkpart.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="dragonpart.h">
+    <ClInclude Include="satellitePart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">

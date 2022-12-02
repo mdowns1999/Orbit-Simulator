@@ -1,15 +1,15 @@
-// /*************************************************************
-//  * 1. Name:
-//  *      Mike, Ben, and Star
-//  * 2. Assignment Name:
-//  *      Lab 07: Orbit Simulator
-//  * 3. Assignment Description:
-//  *      Simulate satellites orbiting the earth
-//  * 4. What was the hardest part? Be as specific as possible.
-//  *      Finding bugs with our equations so it could orbit the earth.
-//  * 5. How long did it take for you to complete the assignment?
-//  *      3.5 Hours
-//  *****************************************************************/
+ /*************************************************************
+  * 1. Name:
+  *      Mike, Ben, and Star
+  * 2. Assignment Name:
+  *      Lab 07: Orbit Simulator
+  * 3. Assignment Description:
+  *      Simulate satellites orbiting the earth
+  * 4. What was the hardest part? Be as specific as possible.
+  *      Finding bugs with our equations so it could orbit the earth.
+  * 5. How long did it take for you to complete the assignment?
+  *      3.5 Hours
+  *****************************************************************/
 
 #include <cassert>        // for ASSERT
 #include "uiInteract.h"   // for INTERFACE

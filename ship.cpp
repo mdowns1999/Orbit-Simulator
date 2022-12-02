@@ -9,29 +9,35 @@
 
 #include "ship.h"
 
-void Ship::satelliteInput(const Interface * pUI)
+
+/***************************************
+* SATELLITE INPUT
+* Move the Ship
+****************************************/
+void Ship::satelliteInput(const Interface * pUI, list<Satellite*> &pSatellites)
 {
 
  // move by a little
-    //  if (pUI->isUp())
-    //     pos.addPixelsY(1.0);
-    //  if (pUI->isDown())
-    //     pos.addPixelsY(-1.0);
     if (pUI->isLeft())
        angle -= 0.1;
     if (pUI->isRight())
        angle += 0.1;
+    if (pUI->isSpace())
+    {
+       spawnProjectile(pSatellites);
+    }
+
+   
 }
 
+/***************************************
+* MOVE SHIP
+* Calculate the math to move ship
+****************************************/
 void Ship::moveShip(double time, const Interface* pUI)
 {
     Acceleration accel;
-   
-   
-      //pos.addPixelsY(2.0);
-    
 
-      
       // Compute physicss
       double gravity = gravityDirection(pos.getMetersX(), pos.getMetersY());
 

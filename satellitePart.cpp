@@ -1,15 +1,10 @@
 /***********************************************************************
- * Header File:
- *    GPS PART
+ * Source File:
+ *    Sattelite Part
  * Author:
- *   Ben, Star, and Mike
+ *    Ben, Star, and Mike
  * Summary:
- *
+ * This will have many classes that have parts of satellites.
  ************************************************************************/
-#pragma once
-#include "satellite.h"
-class GPSPart :
-    public Satellite
-{
-};
 
+#include "satellitePart.h"

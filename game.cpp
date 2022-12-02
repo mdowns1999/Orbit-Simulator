@@ -10,21 +10,20 @@
 #include "game.h"
 #include "cassert"
 
-
+/***************************************
+* INPUT
+* Get User Input to move the ship
+****************************************/
 void Game::input(const Interface* pUI)
 {
-   // list<Satellite*>::iterator it;
-
-   // //for (myitr = l.begin(); myitr != l.end(); ++myitr)
-   // //for (it = pSatellites.begin(); it != pSatellites.begin(); ++it) {
-   //    (*it)->getIsShip();
-
-      pSatellites.front()->satelliteInput(pUI);
+      pSatellites.front()->satelliteInput(pUI, pSatellites);
 }
-   
-//}
 
-
+/***************************************
+* UPDATE
+* This will update all the objects of the
+* Game.
+****************************************/
 void Game::update(const Interface* pUI)
 {
    
@@ -59,15 +58,12 @@ void Game::update(const Interface* pUI)
    if (timeToBreak > 100)
    {
       double randomPosition = random(0, pSatellites.size());
-      cout << randomPosition << endl;
 
       list<Satellite*>::iterator it = pSatellites.begin();
       advance(it, randomPosition);
       if (!(*it)->getIsShip() && !(*it)->doesDecay())
       {
          (*it)->setBroken();
-
-         //cout << (*it)->isBroken() << endl;
 
          timeToBreak = 0;
       }
@@ -87,32 +83,36 @@ void Game::update(const Interface* pUI)
 
    }
 
-   //for (auto it = pSatellites.begin(); it != pSatellites.end(); )
-   //{
-   //   if ((*it)->getDecayTime() == 0)
-   //   {
-   //      delete* it;
-   //      it = pSatellites.erase(it);
-   //   }
-   //   else
-   //   {
-   //      ++it;
-   //      if ((*it)->doesDecay())
-   //      {
-   //         (*it)->updateDecayTime();
-   //      }
-   //   }
-   //}
-  
-
+   for (auto it = pSatellites.begin(); it != pSatellites.end(); )
+   {
+      if ((*it)->doesDecay())
+      {
+         
+         if ((*it)->getDecayTime() == 0)
+         {
+            (*it)->setDead();
+         }
+         else
+         {
+            (*it)->updateDecayTime();
+         }
+      }
+      ++it; 
+   }
 }
 
+/***************************************
+* DISPLAY
+* Display everything to the user.
+****************************************/
 void Game::display(const Interface* pUI)
 {
-   // draw the earth
+   // Set the Earths Position
    ptEarth.setMeters(0.0, 0.0);
-    
 
+   //Draw Earth
+   drawEarth(ptEarth, angleEarth);
+    
    //Draw Satellites
    for (auto sat : pSatellites)
    {
@@ -131,28 +131,15 @@ void Game::display(const Interface* pUI)
    {
       pStars[star]->drawStars();
    }
-   //Draw Earth
-   drawEarth(ptEarth, angleEarth);
-
 }
 
+/***************************************
+* COLLISION
+* This will update all the objects of the
+* Game.
+****************************************/
 void Game::collision()
 {
-         //cout << "SHIP: " << pSatellites[0]->getPosition() << endl;
-         //cout << "GPS 1: " << pSatellites[1]->getPosition() << endl;
-         
-         //cout << "DISTANCE:  " << computeDistance(pSatellites[0]->getPosition(), pSatellites[1]->getPosition()) << endl;
-         //computeDistance(pSatellites[0]->getPosition(), ptEarth) < 3500000.0
-
-         //cout << "DISTANCE: " << i << " " << computeDistance(pSatellites[i]->getPosition(), pSatellites[j]->getPosition()) << endl;
-         // if (computeDistance(pSatellites[i]->getPosition(), pSatellites[j]->getPosition()) < 1000.0)
-         // {
-         //    cout << "HIT!!!!!!!!!!!!!!!!" << endl;
-         // }
-
-   //vector<Satellite *>::iterator i;
-         
-   //for (i = pSatellites.begin(); i != pSatellites.end(); i++)
    for (auto sat : pSatellites)
    {
       if (computeHeightAboveEarth(sat->getPosition().getMetersX(), sat->getPosition().getMetersY()) < 0.0)
@@ -166,21 +153,20 @@ void Game::collision()
       {
          if (sat != sat2 && computeDistance(sat->getPosition(), sat2->getPosition()) < 3000000.0)
          {
-            cout << "HIT!!!!!!!!!!!!!!!!" << endl;
-            sat->setDead();
-            
+            //Set the Collided Satellites as Dead
+            sat->setDead();          
             sat2->setDead();
-
-            
-            //assert(false);
-            
-            
          }
       }
    }
 }
 
-
+/***************************************
+* DESTROY
+* This will delete the pointers to the 
+* satellites and the satellites themselves 
+* from the list when needed.
+****************************************/
 void Game::destroy()
 {
 
@@ -192,20 +178,15 @@ void Game::destroy()
          delete child;*/
          if (!(*it)->doesDecay())
          {
-            cout << "SPAWN" << endl;
+            //cout << "SPAWN" << endl;
             (*it)->spawnFragments(pSatellites);
+            (*it)->spawnParts(pSatellites);
          }
-
          delete* it;
          it = pSatellites.erase(it);
-         
-
       }
       else
          ++it;
    }
-
-
-   
 }
       

@@ -1,3 +1,13 @@
+/***********************************************************************
+ * Header File:
+ *    Acceleration
+ * Author:
+ *   Ben, Star, and Mike
+ * Summary:
+ * Compute the Acceleration for the Simulation
+ ************************************************************************/
+
+
 #pragma once
 #include <math.h> // Sin and Cos
 

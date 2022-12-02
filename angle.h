@@ -1,17 +1,20 @@
+/***********************************************************************
+ * Header File:
+ *    Angle
+ * Author:
+ *   Ben, Star, and Mike
+ * Summary:
+ * Stores an angle in radians as an attribute, contains
+ * methods to change the angle between radians and
+ * degrees, display it in degrees, and normalizes it.
+ ************************************************************************/
+
+
 #pragma once
-
-
 #include <cmath> // pi and sqrt
 #define _USE_MATH_DEFINES // pi and sqrt
 #include <math.h> // floor
 #include <iostream> // cout and cin
-
-/***************************************************
-* Angle Class
-* Stores an angle in radians as an attribute, contains
-* methods to change the angle between radians and
-* degrees, display it in degrees, and normalizes it.
-****************************************************/
 class Angle
 {
 public:
@@ -19,7 +22,7 @@ public:
     friend class testAngle;
 
     // default constructor
-    Angle(){}
+    Angle(){};
 
     // update the angleRadians attribute
     void setRadians(double newAngle){ angleRadians = normalize(newAngle);}

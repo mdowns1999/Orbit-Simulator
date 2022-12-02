@@ -4,12 +4,13 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- *    
+ *    Specifics for the dragon child class
  ************************************************************************/
 
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"
+#include "satellitePart.h"
 class Dragon : public Satellite
 {
 public:
@@ -18,5 +19,8 @@ public:
    void  draw()  const {
       drawCrewDragon(pos, angle);
    }
+
+   void spawnParts(list<Satellite*>& pSatellites); 
+
 };
 
