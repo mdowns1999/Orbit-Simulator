@@ -15,23 +15,10 @@
  ****************************************/
 void Hubble::spawnParts(list<Satellite*>& pSatellites)
 {
-    HubbleComputer*  pHubbleComputer = new HubbleComputer(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY()  + random(-6000000.0, 6000000.0));
-    HubbleTelescope*  pHubbleTelescope= new HubbleTelescope(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0));
-    HubbleRight*  pHubbleRight = new HubbleRight(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0));
-    HubbleLeft*  pHubbleLeft = new HubbleLeft(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0));
-
-
-    Velocity hubbleComputerVel(velocity);
-    pHubbleComputer->setVelocity(hubbleComputerVel);  
-
-    Velocity hubbleTelescoprVel(velocity);
-    pHubbleTelescope->setVelocity(hubbleTelescoprVel);  
-
-    Velocity hubbleRightVel(velocity);
-    pHubbleRight->setVelocity(hubbleRightVel);  
-
-    Velocity hubbleLeftVel(velocity);
-    pHubbleLeft->setVelocity(hubbleLeftVel);  
+    HubbleComputer*   pHubbleComputer  = new HubbleComputer(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY()  + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
+    HubbleTelescope*  pHubbleTelescope = new HubbleTelescope(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
+    HubbleRight*      pHubbleRight     = new HubbleRight(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
+    HubbleLeft*       pHubbleLeft      = new HubbleLeft(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
 
     pSatellites.push_back(pHubbleComputer);
     pSatellites.push_back(pHubbleTelescope);

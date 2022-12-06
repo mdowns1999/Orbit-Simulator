@@ -26,6 +26,6 @@ public:
    void draw() const { drawProjectile(pos); }
    bool doesDecay() { return canDecay; }
    double getDecayTime() { return decayTime;}
-   void updateDecayTime() { cout << "DecayTime: " << decayTime << endl;  decayTime--;}
+   void updateDecayTime() {decayTime--;}
 
 };

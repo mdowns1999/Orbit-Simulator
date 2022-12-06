@@ -21,6 +21,7 @@ class Fragment : public Satellite
         //Methods
        Fragment() { decayTime = 6; }
         Fragment(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); decayTime = 50;}
+        Fragment(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy); decayTime = 50;}
         
         //Getters
         void draw() const { drawFragment(pos, 0.1); }

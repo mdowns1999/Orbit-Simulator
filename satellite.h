@@ -40,6 +40,7 @@ public:
    //Methods
    Satellite(){}
    Satellite(double x, double y) {pos.setMetersX(x);  pos.setMetersY(y);}
+   Satellite(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy);}
    virtual double getRadius()    { return radius; }
    virtual bool isDead()         { return dead; }
    virtual void setDead()        {  dead = true; }

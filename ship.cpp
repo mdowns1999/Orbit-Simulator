@@ -23,9 +23,7 @@ void Ship::satelliteInput(const Interface * pUI, list<Satellite*> &pSatellites)
     if (pUI->isRight())
        angle += 0.1;
     if (pUI->isSpace())
-    {
        spawnProjectile(pSatellites);
-    }
 
    
 }
@@ -49,7 +47,8 @@ void Ship::moveShip(double time, const Interface* pUI)
       accel.setDDY(accel.computeVerticalComp(gravity, gHeight));
 
 
-      if (pUI->isUp()){
+      if (pUI->isUp())
+      {
         accel.setDDX(accel.getDDX() + accel.computeHorizontalComp(angle, 1.5));
         accel.setDDY(accel.getDDY()  + accel.computeVerticalComp(angle, 1.5));
       }

@@ -15,6 +15,8 @@ class GPS : public Satellite
 public:
    GPS() {}
    GPS(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
+   GPS(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy);
+   }
    void  draw()  const { drawGPS(pos, angle); }
 
    void spawnParts(list<Satellite*>& pSatellites); 

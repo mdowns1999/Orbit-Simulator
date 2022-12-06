@@ -15,14 +15,8 @@
 ****************************************/
 void Starlink::spawnParts(list<Satellite*>& pSatellites)
 {
-    StarlinkArray*  pStarlinkArray = new StarlinkArray(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY()  + random(-6000000.0, 6000000.0));
-    StarlinkBody*  pStarlinkBody   = new StarlinkBody(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0));
-
-    Velocity StarlinkArrayVel(velocity);
-    pStarlinkArray->setVelocity(StarlinkArrayVel);
-
-    Velocity StarlinkBodyVel(velocity);
-    pStarlinkBody->setVelocity(StarlinkBodyVel);
+    StarlinkArray*  pStarlinkArray = new StarlinkArray(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY()  + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
+    StarlinkBody*   pStarlinkBody  = new StarlinkBody(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
 
     pSatellites.push_back(pStarlinkArray);
     pSatellites.push_back(pStarlinkBody);

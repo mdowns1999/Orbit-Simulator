@@ -16,9 +16,7 @@
 **********************************************/
 void Satellite::spawnFragments(list<Satellite*>& pSatellites)
 {
-   Fragment*  pFragment1 = new Fragment(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + 3000000 + random(-6000000.0, 6000000.0));
-   Velocity fragmentVel(velocity);
-   pFragment1->setVelocity(fragmentVel);
+   Fragment*  pFragment1 = new Fragment(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + 3000000 + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
 
    pSatellites.push_back(pFragment1);
 
@@ -56,7 +54,7 @@ void Satellite::move(double time)
    // Compute physicss
    double gravity = gravityDirection(pos.getMetersX(), pos.getMetersY());
 
-   double height = computeHeightAboveEarth(pos.getMetersX(), pos.getMetersY());
+   double height  = computeHeightAboveEarth(pos.getMetersX(), pos.getMetersY());
 
    double gHeight = gravityHeight(height);
 
