@@ -14,7 +14,6 @@ class Hubble : public Satellite
 {
 public:
    Hubble() {}
-   Hubble(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); }
    Hubble(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy);
    }
    void  draw()  const {

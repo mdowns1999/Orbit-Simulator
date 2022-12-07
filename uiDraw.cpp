@@ -213,7 +213,9 @@ void drawProjectile(const Position& pt)
 {
    ColorRect rects[] =
    {
-      {1,1, -1,1, -1,-1, 1,-1, RGB_WHITE },
+      //{1,1, -1,1, -1,-1, 1,-1, RGB_WHITE }
+
+      {2,2, -2,2, -2,-2, 2,-2, RGB_WHITE },
    };
 
    for (int i = 0; i < sizeof(rects) / sizeof(ColorRect); i++)

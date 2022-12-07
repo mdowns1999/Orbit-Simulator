@@ -100,7 +100,7 @@ void Game::display(const Interface* pUI)
    //Draw Satellites
    for (auto sat : pSatellites)
    {
-      if (!sat->getIsShip())
+      if (sat->getType() != SHIP)
          sat->draw();
       else
          sat->drawSpaceShip(pUI);
@@ -121,7 +121,7 @@ void Game::collision()
    for (auto sat : pSatellites)
    {
       if (computeHeightAboveEarth(sat->getPosition().getMetersX(), sat->getPosition().getMetersY()) < 0.0)
-            sat->setDead();
+            sat->setDeadStatus();
 
       //If we hit other Floating Objects
       for (auto sat2 : pSatellites)
@@ -129,8 +129,8 @@ void Game::collision()
          if (sat != sat2 && computeDistance(sat->getPosition(), sat2->getPosition()) < 3000000.0)
          {
             //Set the Collided Satellites as Dead
-            sat->setDead();          
-            sat2->setDead();
+            sat->setDeadStatus();
+            sat2->setDeadStatus();
          }
       }
    }
@@ -147,9 +147,9 @@ void Game::destroy()
 
    for (auto it = pSatellites.begin(); it!= pSatellites.end(); )
    {
-      if ((*it)->isDead())
+      if ((*it)->getStatus() == DEAD)
       {
-         if (!(*it)->doesDecay())
+         if ((*it)->getType() != DECAYABLE)
          {
             (*it)->spawnFragments(pSatellites);
             (*it)->spawnParts(pSatellites);
@@ -162,7 +162,6 @@ void Game::destroy()
    }
 }
 
-
 /***************************************
 * MOVE SATELLITES
 * Move all satellites in the game
@@ -172,7 +171,7 @@ void Game::moveSatellites(const Interface* pUI)
    for (auto sat : pSatellites)
    {
 
-      if (!sat->getIsShip())
+      if (sat->getType() != SHIP)
          sat->move(48);
       else
          sat->moveShip(48, pUI);
@@ -204,15 +203,16 @@ void Game::updateEarthAngle()
 ****************************************/
 void Game::breakSatellite()
 {
-   if (timeToBreak > 1000)
+   if (timeToBreak > 10)
    {
       double randomPosition = random(0, pSatellites.size());
 
       list<Satellite*>::iterator it = pSatellites.begin();
       advance(it, randomPosition);
-      if (!(*it)->getIsShip() && !(*it)->doesDecay())
+      if ((*it)->getType() == SATELLITE)
       {
-         (*it)->setBroken();
+         //(*it)->setBroken();
+         (*it)->setBrokenStatus();
 
          timeToBreak = 0;
       }
@@ -229,7 +229,7 @@ void Game::spinBrokenSatellite()
 {
    for (auto sat : pSatellites)
    {
-      if (sat->isBroken())
+      if (sat->getStatus())
          sat->updateAngle();
    }
 }
@@ -243,15 +243,17 @@ void Game::updateDecayTime()
 {
    for (auto it = pSatellites.begin(); it != pSatellites.end(); )
    {
-      if ((*it)->doesDecay())
+      if ((*it)->getType() == DECAYABLE)
       {
 
          if ((*it)->getDecayTime() == 0)
-            (*it)->setDead();
+            (*it)->setDeadStatus();
          else
             (*it)->updateDecayTime();
       }
       ++it;
    }
 }
+
+
 

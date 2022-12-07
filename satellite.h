@@ -25,45 +25,50 @@ class Satellite
 
 protected:
    Position pos;
-   // ADD DIRECTION
    double angularVelocity;
-   bool dead = false;
-   bool broken = false;
    double radius;
    Velocity velocity;
    double decayTime = 0.0;
    double angle = 0.1;
-   bool isShip = false;
-   bool canDecay = false;
+   enum Status { ALIVE, DEAD, BROKEN };
+   enum Type { SHIP, SATELLITE, PART, DECAYABLE };
+   Status status = ALIVE;
+   Type type = SATELLITE;
 
 public:
-   //Methods
+   // Methods
    Satellite(){}
    Satellite(double x, double y) {pos.setMetersX(x);  pos.setMetersY(y);}
    Satellite(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy);}
-   virtual double getRadius()    { return radius; }
-   virtual bool isDead()         { return dead; }
-   virtual void setDead()        {  dead = true; }
-   virtual bool isBroken() { return broken; }
-   virtual void setBroken() { broken = true; }
-   virtual Position getPosition(){ return pos; }
-   virtual void setPosition(Position position) { pos = position; }
-   virtual void setVelocity(Velocity vel) { velocity = vel;}
-   virtual bool getIsShip()      { return isShip;}
-   virtual bool doesDecay()      { return canDecay;}
-   virtual bool updateAngle() { return angle+= 25; }
-   virtual double getDecayTime() { return decayTime; }
-   virtual void updateDecayTime() {decayTime--; }
 
-   
+   // Getters
+   Status getStatus()      { return status; }
+   Type getType()          { return type; }
+   Position getPosition()  { return pos; }
+   double getRadius()      { return radius; }
+   double getDecayTime()   { return decayTime; }
 
+   // Setters
+   void setDeadStatus() { status = DEAD; }
+   void setBrokenStatus() { status = BROKEN; }
+   void setPosition(Position position) { pos = position; }
+   void setVelocity(Velocity vel) { velocity = vel;}
+
+   // Update
+   bool updateAngle() { return angle+= 25; }
+   void updateDecayTime() {decayTime--; }
    virtual void satelliteInput(const Interface* pUI, list<Satellite*> &pSatellites) {}
 
+   // Draw
    virtual void draw() const {}
    virtual void drawSpaceShip(const Interface *pUI) const {}
+
+   // Spawn
    virtual void spawnFragments(list<Satellite*>& pSatellites);
    virtual void spawnProjectile(list<Satellite*>& pSatellites);
    virtual void spawnParts(list<Satellite*>& pSatellites) {}
+
+   // Mov
    virtual void move(double time);
    virtual void moveShip(double time, const Interface* pUI){}
 

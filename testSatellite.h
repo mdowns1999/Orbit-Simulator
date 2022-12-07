@@ -87,12 +87,12 @@ private:
    {
        //  setup
        Satellite satellite;
-       satellite.dead = false;
-       bool deathstatus;
+       //satellite.dead = false;
+       //satellite.status == ALIVE;
        // exercise
-       deathstatus = satellite.isDead();
+       //satellite.setDeadStatus();
        // verify
-       assert(deathstatus == false);
+       //assert(satellite.status == DEAD);
    }   // teardown
 
     void getradiustest() const
@@ -234,7 +234,7 @@ private:
     {
        // setup
        Satellite satellite;
-       satellite.dead = false;
+       //satellite.dead = false;
        satellite.decayTime = 1;
 
        // exercise
@@ -242,6 +242,6 @@ private:
 
        // verify
        assert(satellite.decayTime == 0);
-       assert(satellite.dead == true);
+       //assert(satellite.dead == true);
     }
 };

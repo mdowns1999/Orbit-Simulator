@@ -38,6 +38,10 @@ public:
    void collision();
    void destroy();
 
+   //Set up types
+   enum Status { ALIVE, DEAD, BROKEN };
+   enum Type { SHIP, SATELLITE, PART, DECAYABLE };
+
    //Set Positions
    Position ptUpperRight;
    Position ptEarth;

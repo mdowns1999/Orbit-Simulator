@@ -20,12 +20,8 @@ private:
 public:
    //Methods
   Projectile() { decayTime = 6; }
-  Projectile(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); decayTime = 20;}
+  Projectile(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); decayTime = 20; type = DECAYABLE; }
 
    //Getters
    void draw() const { drawProjectile(pos); }
-   bool doesDecay() { return canDecay; }
-   double getDecayTime() { return decayTime;}
-   void updateDecayTime() {decayTime--;}
-
 };

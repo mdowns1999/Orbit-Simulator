@@ -13,7 +13,8 @@ class Sputnik : public Satellite
 {
 public:
    Sputnik() {}
-   Sputnik(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy);}
+   Sputnik(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy); status = ALIVE; type = SATELLITE;
+   }
    void draw()  const { drawSputnik(pos, angle);}
 };
 

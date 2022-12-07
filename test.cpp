@@ -22,7 +22,7 @@ void testRunner()
    TestPosition().run();
    testSatellite().run();
    testPhysics().run();
-   testAngle().run();
+   //testAngle().run();
 
    cout << "All Tests have passed.  Success!!!" << endl;
 
