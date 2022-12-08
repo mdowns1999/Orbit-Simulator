@@ -8,7 +8,6 @@
  *    or the location on the field.
  ************************************************************************/
 
-
 #pragma once
 #include "physics.h"
 #include <iostream> 

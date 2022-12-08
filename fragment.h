@@ -4,7 +4,7 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- * Debrie that floats in space
+ * Debrie that floats in space when satellites or parts break
  ************************************************************************/
 
 #pragma once

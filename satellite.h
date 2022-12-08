@@ -4,8 +4,11 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- *    A object that floats in space
+ * A object that floats in space.  This is the parent class for all 
+ * the satellites (GPS, Hubble, Sputnik, Dragon, etc. ),Projectile, Ship,
+ * and Bullet.
  ************************************************************************/
+
 #pragma once
 #include "position.h"
 #include "uiInteract.h"
@@ -39,7 +42,7 @@ public:
    // Methods
    Satellite(){}
    Satellite(double x, double y) {pos.setMetersX(x);  pos.setMetersY(y);}
-   Satellite(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy);}
+   Satellite(double x, double y, double dx, double dy);
 
    // Getters
    Status getStatus()      { return status; }

@@ -9,6 +9,20 @@
 
 #include "gps.h"
 
+ /***************************************
+ * NON DEFAULT CONSTRUCTOR
+ * Set up the satellites position and
+ * velocity.
+ ****************************************/
+GPS::GPS(double x, double y, double dx, double dy) 
+{
+   pos.setMetersX(x);  
+   pos.setMetersY(y); 
+   velocity.setDX(dx); 
+   velocity.setDY(dy);
+}
+
+
 /***************************************
 * SPAWN PARTS
 * Spawn the parts of the broken satellite

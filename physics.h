@@ -4,7 +4,7 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- * these are our standalone physics functions that we need for gravity and
+ * These are our standalone physics functions that we need for gravity and
  * the height above the earth.
  ************************************************************************/
 #pragma once
@@ -14,11 +14,9 @@
 #include <iostream>
 using namespace std;
 
-
 //VARIABLES:
 const double radius = 6378000.0;
 const double gravity = -9.8067;
-
 
 /*********************************************
 * COMPUTE HEIGHT ABOVE EARTH

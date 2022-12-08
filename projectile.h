@@ -11,7 +11,6 @@
 #include "satellite.h"
 #include "uiDraw.h"
 
-
 class Projectile : public Satellite
 {
 private:
@@ -20,7 +19,7 @@ private:
 public:
    //Methods
   Projectile() { decayTime = 6; }
-  Projectile(double x, double y) { pos.setMetersX(x);  pos.setMetersY(y); decayTime = 20; type = DECAYABLE; }
+  Projectile(double x, double y);
 
    //Getters
    void draw() const { drawProjectile(pos); }

@@ -4,7 +4,9 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- * Where all the satellites are initiallized
+ * Where all the satellites are initiallized and the game is updated. Here
+ * We will also detect any collision and destroy any gragments after a 
+ * certain amount of time.
  ************************************************************************/
 
 #pragma once
@@ -21,11 +23,6 @@
 #include "physics.h"
 #include <list>
 
-/***********************************************************************
- * Game Class
- * Summary:
- * 
- ************************************************************************/
 class Game
 {
 public:

@@ -4,11 +4,13 @@
  * Author:
  *   Ben, Star, and Mike
  * Summary:
- * Where all the classes for parts of satellite are defined
+ * Where all the classes for parts of satellite are defined after they are 
+ * destroyed.
  ************************************************************************/
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"
+
 class DragonRight : public Satellite
 {
 public:

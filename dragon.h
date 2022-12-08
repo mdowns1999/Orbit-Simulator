@@ -15,7 +15,7 @@ class Dragon : public Satellite
 {
 public:
    Dragon() {}
-   Dragon(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy);}
+   Dragon(double x, double y, double dx, double dy);
    void  draw()  const {
       drawCrewDragon(pos, angle);
    }

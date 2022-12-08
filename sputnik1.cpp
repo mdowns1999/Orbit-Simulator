@@ -1,23 +1,25 @@
 /***********************************************************************
  * Source File:
- *    Projectile
+ *    Sputnik
  * Author:
  *    Ben, Star, and Mike
  * Summary:
- *
+ *  A type of satellite
  ************************************************************************/
 
-#include "projectile.h"
+#include "sputnik.h"
 
  /***************************************
  * NON DEFAULT CONSTRUCTOR
  * Set up the satellites position and
  * velocity.
  ****************************************/
-Projectile::Projectile(double x, double y) 
-{ 
+Sputnik::Sputnik(double x, double y, double dx, double dy) 
+{
    pos.setMetersX(x);  
    pos.setMetersY(y); 
-   decayTime = 20; 
-   type = DECAYABLE; 
+   velocity.setDX(dx); 
+   velocity.setDY(dy); 
+   status = ALIVE; 
+   type = SATELLITE;
 }

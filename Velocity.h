@@ -10,7 +10,6 @@
 #pragma once
 #include "Acceleration.h"
 
-
 class Velocity
 {
 private:

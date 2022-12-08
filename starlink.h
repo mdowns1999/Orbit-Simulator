@@ -10,12 +10,12 @@
 #include "satellite.h"
 #include "uiDraw.h"
 #include "satellitePart.h"
+
 class Starlink : public Satellite
 {
 public:
    Starlink() {}
-   Starlink(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy);}
-
+   Starlink(double x, double y, double dx, double dy);
    void  draw()  const {
       drawStarlink(pos, angle);
    }

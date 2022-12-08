@@ -10,6 +10,20 @@
 #include "fragment.h"
 #include "projectile.h"
 
+ /***************************************
+ * NON DEFAULT CONSTRUCTOR
+ * Set up the satellites position and
+ * velocity.
+ ****************************************/
+Satellite::Satellite(double x, double y, double dx, double dy) 
+{ 
+   pos.setMetersX(x);  
+   pos.setMetersY(y); 
+   velocity.setDX(dx); 
+   velocity.setDY(dy); 
+}
+
+
 /*********************************************
 * SPAWN FRAGMENTS
 * Spawn the fragments of the broken satellite

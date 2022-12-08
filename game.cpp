@@ -4,14 +4,19 @@
  * Author:
  *    Ben, Star, and Mike
  * Summary:
- *
+ * All the functions that will run the operations of the game.
  ************************************************************************/
 
 #include "game.h"
 #include "cassert"
 
 
-
+ /***************************************
+ * GAME NON DEFAULT CONSTRUCTOR
+ * This is where we will initiallize all 
+ * the satellites and draw the starts and 
+ * the earth.
+ ****************************************/
 Game::Game(Position ptUpperRight) :
    ptUpperRight(ptUpperRight)
 {
@@ -203,7 +208,7 @@ void Game::updateEarthAngle()
 ****************************************/
 void Game::breakSatellite()
 {
-   if (timeToBreak > 10)
+   if (timeToBreak > 500)
    {
       double randomPosition = random(0, pSatellites.size());
 
