@@ -28,11 +28,11 @@ Satellite::Satellite(double x, double y, double dx, double dy)
 * SPAWN FRAGMENTS
 * Spawn the fragments of the broken satellite
 **********************************************/
-void Satellite::spawnFragments(list<Satellite*>& pSatellites)
+void Satellite::spawnFragments(list<Satellite*>& satellites)
 {
    Fragment*  pFragment1 = new Fragment(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + 3000000 + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
 
-   pSatellites.push_back(pFragment1);
+   satellites.push_back(pFragment1);
 
 }
 
@@ -40,7 +40,7 @@ void Satellite::spawnFragments(list<Satellite*>& pSatellites)
 * SPAWN PROJECTILE
 * Spawn the projectile of ship
 **********************************************/
-void Satellite::spawnProjectile(list<Satellite*>& pSatellites)
+void Satellite::spawnProjectile(list<Satellite*>& satellites)
 {
    //Step 1: Set Bullet to Ship Position
    Projectile* pProjectile = new Projectile(pos.getMetersX(), pos.getMetersY());
@@ -51,9 +51,8 @@ void Satellite::spawnProjectile(list<Satellite*>& pSatellites)
    projectileVel.addVelocity(velocity);
    pProjectile->setVelocity(projectileVel);
    pProjectile->move(100);
-
    
-   pSatellites.push_back(pProjectile);
+   satellites.push_back(pProjectile);
 
 }
 
@@ -63,7 +62,6 @@ void Satellite::spawnProjectile(list<Satellite*>& pSatellites)
 **********************************************/
 void Satellite::move(double time)
 {
-
    Acceleration accel;
    // Compute physicss
    double gravity = gravityDirection(pos.getMetersX(), pos.getMetersY());

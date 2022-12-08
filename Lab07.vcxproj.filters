@@ -30,16 +30,10 @@
     <ClCompile Include="position.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="demo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="satellite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ship.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="angle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Velocity.cpp">
@@ -66,13 +60,7 @@
     <ClCompile Include="projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="satellitePart.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="testLab.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sputnik1.cpp">
@@ -102,12 +90,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ship.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="angle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="testAngle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Velocity.h">

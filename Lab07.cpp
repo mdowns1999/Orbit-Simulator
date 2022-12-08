@@ -73,7 +73,7 @@ int main(int argc, char** argv)
    Game game(ptUpperRight);
 
    //Run Unit Tests
-   //testRunner();
+   testRunner();
 
    // set everything into action
    ui.run(callBack, &game);

@@ -23,6 +23,10 @@
 #include "physics.h"
 #include <list>
 
+/***********************************************************************
+ * GAME
+ * This class will run the game and handle specifics
+ ************************************************************************/
 class Game
 {
 public:
@@ -35,10 +39,6 @@ public:
    void collision();
    void destroy();
 
-   //Set up types
-   enum Status { ALIVE, DEAD, BROKEN };
-   enum Type { SHIP, SATELLITE, PART, DECAYABLE };
-
    //Set Positions
    Position ptUpperRight;
    Position ptEarth;
@@ -47,7 +47,7 @@ public:
    Star star;
    
    //Set up a List of Satellites and Stars
-   list<Satellite *> pSatellites;
+   list<Satellite *> satellites;
    Star* pStars[200];
    
    //Variables

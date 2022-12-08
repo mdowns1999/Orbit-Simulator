@@ -9,6 +9,11 @@
 #pragma once
 #include "uiDraw.h"
 #include "position.h"
+
+/***********************************************************************
+ * STAR
+ * This will handle the stars in th ebackground of the game
+ ************************************************************************/
 class Star
 {
 public:

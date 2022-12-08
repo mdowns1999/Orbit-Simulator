@@ -19,6 +19,15 @@
 #include <list>
 using namespace std;
 
+// Set up type and status for all the satellites
+enum Status { ALIVE, DEAD, BROKEN };
+enum Type { SHIP, SATELLITE, PART, DECAYABLE };
+
+/***********************************************************************
+ * Satellite
+ * This class is the parent class to all satellites.  All child classes will
+ * use these methods.
+ ************************************************************************/
 class Satellite
 {
    // For the Unit Tests
@@ -28,15 +37,14 @@ class Satellite
 
 protected:
    Position pos;
-   double angularVelocity;
-   double radius;
-   Velocity velocity;
-   double decayTime = 0.0;
-   double angle = 0.1;
-   enum Status { ALIVE, DEAD, BROKEN };
-   enum Type { SHIP, SATELLITE, PART, DECAYABLE };
    Status status = ALIVE;
    Type type = SATELLITE;
+   Velocity velocity;
+   double angularVelocity;
+   double radius;
+   double decayTime = 0.0;
+   double angle = 0.1;
+   
 
 public:
    // Methods
@@ -60,18 +68,18 @@ public:
    // Update
    bool updateAngle() { return angle+= 25; }
    void updateDecayTime() {decayTime--; }
-   virtual void satelliteInput(const Interface* pUI, list<Satellite*> &pSatellites) {}
+   virtual void satelliteInput(const Interface* pUI, list<Satellite*> &satellites) {}
 
    // Draw
    virtual void draw() const {}
    virtual void drawSpaceShip(const Interface *pUI) const {}
 
    // Spawn
-   virtual void spawnFragments(list<Satellite*>& pSatellites);
-   virtual void spawnProjectile(list<Satellite*>& pSatellites);
-   virtual void spawnParts(list<Satellite*>& pSatellites) {}
+   virtual void spawnFragments(list<Satellite*>& satellites);
+   virtual void spawnProjectile(list<Satellite*>& satellites);
+   virtual void spawnParts(list<Satellite*>& satellites) {}
 
-   // Mov
+   // Move
    virtual void move(double time);
    virtual void moveShip(double time, const Interface* pUI){}
 

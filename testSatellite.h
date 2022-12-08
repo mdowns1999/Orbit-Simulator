@@ -12,9 +12,12 @@
 #include <iostream>
 #include "cassert"
 #include "satellite.h"
-#include <vector>
+#include <list>
 using namespace std;
 
+ /***************************************
+ * DUMMY SATELLITE
+ ****************************************/
 class dummysatellite : public Satellite
 {
 public:
@@ -23,11 +26,14 @@ public:
    virtual bool isdead() { assert(false); return false; }
    virtual Position getposition() { assert(false); Position pos; return pos; }
    virtual void  draw() const { assert(false); }
-   virtual void destroy(vector<dummysatellite>& satellites, vector<dummysatellite>& decay) { assert(false); }
+   virtual void destroy(list<dummysatellite>& satellites, list<dummysatellite>& decay) { assert(false); }
    virtual void move(float time) { assert(false); }
    virtual void input(Interface ui) { assert(false); }
 };
 
+/***************************************
+ * STUB SATELLITE
+ ****************************************/
 class stubsatellite : public dummysatellite
 {
 public:
@@ -35,12 +41,8 @@ public:
    float getradius() { return 2.0; }
    //bool isDead() { return dead; }
    Position getposition() { Position pos; return pos; }
-   void destroy(vector<stubsatellite>& satellites, vector<stubsatellite>& decay);
+   void destroy(list<stubsatellite>& satellites, list<stubsatellite>& decay);
 };
-
-
-
-
 
 class testSatellite
 {
@@ -51,16 +53,16 @@ public:
       isdeadtest();
       getradiustest();
       getpositiontest();
+
       movetestfalldown();
       movetestfallup();
       movetestfallright();
       movetestfallleft();
+
       destroytest();
       decayTimeTest();
       decayTimeDeathTest();
-
    }
-
 
 private:
 
@@ -79,71 +81,62 @@ private:
        // verify
        assert(satellite.getPosition().getMetersX() == 0.0);
        assert(satellite.getPosition().getMetersY() == 42164000.0);
+   }   //teardown
 
-   }//teardown
-   
-
-    void isdeadtest() 
-   {
+   void isdeadtest() 
+      {
        //  setup
        Satellite satellite;
-       //satellite.dead = false;
-       //satellite.status == ALIVE;
+       satellite.status == ALIVE;
        // exercise
-       //satellite.setDeadStatus();
+       satellite.setDeadStatus();
        // verify
-       //assert(satellite.status == DEAD);
+       assert(satellite.status == DEAD);
    }   // teardown
 
     void getradiustest() const
     {
-      // setup
-      Satellite satellite;
-      satellite.radius = 2.5;
-      double satelliteradius;
-      // exercise
-      satelliteradius = satellite.getRadius();
-      // verify
-      assert(satelliteradius == 2.5);
-    }   // teardown
+       // setup
+       Satellite satellite;
+       satellite.radius = 2.5;
+       double satelliteradius;
+       // exercise
+       satelliteradius = satellite.getRadius();
+       // verify
+       assert(satelliteradius == 2.5);
+    }  // teardown
 
     void getpositiontest() const
     {
-      // setup
+       // setup
        Satellite satellite;
-      Position position(100.0, 100.0);
-      satellite.pos = position;
-      Position testpos;
-      // exercise
-      testpos = satellite.getPosition();
-      // verify
-      assert(testpos.getMetersX() == 100.0);
-      assert(testpos.getMetersY() == 100.0);
-    }   // teardown
+       Position position(100.0, 100.0);
+       satellite.pos = position;
+       Position testpos;
+       // exercise
+       testpos = satellite.getPosition();
+       // verify
+       assert(testpos.getMetersX() == 100.0);
+       assert(testpos.getMetersY() == 100.0);
+    }  // teardown
 
     void movetestfalldown() const
     {
-      // setup
-      Satellite satellite;
-      Position newposition(0.0, 6378000.0);
-      Velocity vel(0.0, 0.0);
-      satellite.pos = newposition;
-      satellite.velocity = vel;
-      double time = 1;
-      // cout << "DX " << satellite.velocity.getDX() << endl;
-      // cout << "DY " << satellite.velocity.getDY() << endl;
-      // exercise
-      satellite.move(time);
-      // verify
-      // cout << "MetersX " << satellite.pos.getMetersX() << endl;
-      // cout << "MetersY " << satellite.pos.getMetersY() << endl;
-      // cout << "DX " << satellite.velocity.getDX() << endl;
-      // cout << "DY " << satellite.velocity.getDY() << endl;
-      assert(closeEnough(0.0, satellite.pos.getMetersX(), 0.1));
-      assert(closeEnough(6377990.2, satellite.pos.getMetersY() , 5.0));
-      assert(closeEnough(0.0, satellite.velocity.getDX(),  0.1));
-      assert(closeEnough(-9.8,  satellite.velocity.getDY(), 0.1));
-    }   // teardown
+       // setup
+       Satellite satellite;
+       Position newposition(0.0, 6378000.0);
+       Velocity vel(0.0, 0.0);
+       satellite.pos = newposition;
+       satellite.velocity = vel;
+       double time = 1;
+       // exercise
+       satellite.move(time);
+       // verify
+       assert(closeEnough(0.0, satellite.pos.getMetersX(), 0.1));
+       assert(closeEnough(6377990.2, satellite.pos.getMetersY() , 5.0));
+       assert(closeEnough(0.0, satellite.velocity.getDX(),  0.1));
+       assert(closeEnough(-9.8,  satellite.velocity.getDY(), 0.1));
+    }  // teardown
 
    void movetestfallup() const
    {
@@ -204,16 +197,12 @@ private:
     {
       // setup
       Satellite satellite(0.0, 42164000.0);
-      vector<Satellite> satellites;
-      satellites.push_back(satellite);
-      vector<Satellite> decay;
+      list<Satellite*> satellites;
+      satellites.push_back(&satellite);
       // exercise
-      //satellite.spawnFragments(satellites);
+      satellite.spawnFragments(satellites);
       // verify
-      assert(satellites.size() == 4);
-      assert(satellites[1].getPosition().getMetersX() == 0.0 && satellites[1].getPosition().getMetersY() == 42164010.0);
-      assert(satellites[2].getPosition().getMetersX() == 10.0 && satellites[2].getPosition().getMetersY() == 42164000.0);
-      assert(satellites[3].getPosition().getMetersX() == 0.0 && satellites[3].getPosition().getMetersY() == 42163990.0);
+      assert(satellites.size() == 2);
     }   // teardown
 
 

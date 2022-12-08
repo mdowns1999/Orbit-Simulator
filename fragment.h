@@ -11,19 +11,18 @@
 #include "satellite.h"
 #include "uiDraw.h"
 
-
+/***********************************************************************
+ * Fragment
+ * A child class of Satellite that will decay
+ * after a short amount of time
+ ************************************************************************/
 class Fragment : public Satellite
 {
-    private:
-    bool canDecay = true;
-    
-    public:
-        //Methods
-        Fragment() { decayTime = 6; }
-        Fragment(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy); decayTime = 50; type = DECAYABLE; }
-        
-        //Getters
-        void draw() const { drawFragment(pos, 0.1); }
+public:
+   //Methods
+   Fragment() {}
+   Fragment(double x, double y, double dx, double dy) { pos.setMetersX(x);  pos.setMetersY(y); velocity.setDX(dx); velocity.setDY(dy); decayTime = 50; type = DECAYABLE; }
+   void draw() const { drawFragment(pos, 0.1); }
 
 };
 

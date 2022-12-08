@@ -25,7 +25,7 @@ class TestPosition
 public:
    void run()
    {
-      Position().setZoom(1000.0 /* 1km equals 1 pixel */);
+      
       defaultConstructor();
       nonDefaultConstructor();
       copyConstructor();
@@ -36,6 +36,7 @@ public:
       
       addPixels();
       addMeters();
+      
    }
    
 private:
@@ -107,6 +108,7 @@ private:
  
    void setPixels() const
    {  // setup
+      Position().setZoom(1000.0 /* 1km equals 1 pixel */);
       Position pos;
       pos.x = 0.0;
       pos.y = 0.0;
@@ -116,7 +118,9 @@ private:
       // verify
       assert(pos.x == 6000.0);
       assert(pos.y == 12000.0);
-   }  // teardown
+      // teardown
+      Position().setZoom(128000.0 /* 1km equals 1 pixel */);
+   }  
    
    void addMeters() const
    {  // setup
@@ -133,6 +137,7 @@ private:
    
    void addPixels() const
    {  // setup
+      Position().setZoom(1000.0 /* 1km equals 1 pixel */);
       Position pos;
       pos.x = 2000.0;
       pos.y = 4000.0;
@@ -142,6 +147,8 @@ private:
       // verify
       assert(pos.x == 4000.0);
       assert(pos.y == 7000.0);
-   }  // teardown
+      // teardown
+      Position().setZoom(128000.0 /* 1km equals 1 pixel */);
+   }  
 
 };

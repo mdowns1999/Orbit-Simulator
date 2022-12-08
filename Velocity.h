@@ -10,6 +10,10 @@
 #pragma once
 #include "Acceleration.h"
 
+/***********************************************************************
+ * Velocity
+ * This class will handle th evelocity that we will use in the game
+ ************************************************************************/
 class Velocity
 {
 private:
@@ -21,8 +25,6 @@ public:
    // constructors
    Velocity() : dx(0.0), dy(0.0) {};
    Velocity(double newDx, double newDy) { dx = newDx; dy = newDy; } 
-
-
    
    Velocity& operator = (const Velocity& vel);
 
@@ -38,7 +40,7 @@ public:
    // calculation 
    double computeVelocity() const;
    double computeAngle()    const;
-   void  addVelocity(Velocity vel);
+   void   addVelocity(Velocity vel);
 
    // update
    void updateVelocity(const Acceleration &accel, double time);

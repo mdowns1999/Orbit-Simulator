@@ -27,13 +27,13 @@ Dragon::Dragon(double x, double y, double dx, double dy)
 * SPAWN PARTS
 * Spawn the parts of the broken satellite
 ****************************************/
-void Dragon::spawnParts(list<Satellite*>& pSatellites)
+void Dragon::spawnParts(list<Satellite*>& satellites)
 {
     DragonCenter*  pDragonCenter = new DragonCenter(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY()  + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
     DragonLeft*    pDragonLeft   = new DragonLeft(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
     DragonRight*   pDragonRight  = new DragonRight(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
 
-    pSatellites.push_back(pDragonCenter);
-    pSatellites.push_back(pDragonLeft);
-    pSatellites.push_back(pDragonRight);
+    satellites.push_back(pDragonCenter);
+    satellites.push_back(pDragonLeft);
+    satellites.push_back(pDragonRight);
 }

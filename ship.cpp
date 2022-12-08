@@ -14,18 +14,14 @@
 * SATELLITE INPUT
 * Move the Ship
 ****************************************/
-void Ship::satelliteInput(const Interface * pUI, list<Satellite*> &pSatellites)
+void Ship::satelliteInput(const Interface * pUI, list<Satellite*> &satellites)
 {
-
- // move by a little
     if (pUI->isLeft())
        angle -= 0.1;
     if (pUI->isRight())
        angle += 0.1;
     if (pUI->isSpace())
-       spawnProjectile(pSatellites);
-
-   
+       spawnProjectile(satellites);
 }
 
 /***************************************
@@ -45,7 +41,6 @@ void Ship::moveShip(double time, const Interface* pUI)
 
       accel.setDDX(accel.computeHorizontalComp(gravity, gHeight));
       accel.setDDY(accel.computeVerticalComp(gravity, gHeight));
-
 
       if (pUI->isUp())
       {

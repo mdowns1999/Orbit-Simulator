@@ -11,6 +11,10 @@
 #include "satellite.h"
 #include "uiDraw.h"
 
+/***********************************************************************
+ * Sputnik
+ * A child class of Satellite.
+ ************************************************************************/
 class Sputnik : public Satellite
 {
 public:

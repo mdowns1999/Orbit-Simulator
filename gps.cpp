@@ -27,13 +27,13 @@ GPS::GPS(double x, double y, double dx, double dy)
 * SPAWN PARTS
 * Spawn the parts of the broken satellite
 ****************************************/
-void GPS::spawnParts(list<Satellite*>& pSatellites)
+void GPS::spawnParts(list<Satellite*>& satellites)
 {
     GPSCenter*  pGPSCenter = new GPSCenter(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY()  + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
     GPSRight*   pGPSRight  = new GPSRight(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
     GPSLeft*    pGPSLeft   = new GPSLeft(pos.getMetersX() + random(-6000000.0, 6000000.0), pos.getMetersY() + random(-6000000.0, 6000000.0), velocity.getDX(), velocity.getDY());
 
-    pSatellites.push_back(pGPSCenter);
-    pSatellites.push_back(pGPSRight);
-    pSatellites.push_back(pGPSLeft);
+    satellites.push_back(pGPSCenter);
+    satellites.push_back(pGPSRight);
+    satellites.push_back(pGPSLeft);
 }

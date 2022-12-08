@@ -11,16 +11,18 @@
 #include "uiDraw.h"
 #include "satellitePart.h"
 
+/***********************************************************************
+ * Starlink
+ * A child class of Satellite.
+ ************************************************************************/
 class Starlink : public Satellite
 {
 public:
    Starlink() {}
    Starlink(double x, double y, double dx, double dy);
-   void  draw()  const {
-      drawStarlink(pos, angle);
-   }
 
-   void spawnParts(list<Satellite*>& pSatellites);
+   void  draw()  const { drawStarlink(pos, angle); }
+   void spawnParts(list<Satellite*>& satellites);
 };
 
 

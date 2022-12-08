@@ -34,17 +34,17 @@ Game::Game(Position ptUpperRight) :
 
 
    //Add to Satellite List
-   pSatellites.push_back(pShip);
-   pSatellites.push_back(pGPS1);
-   pSatellites.push_back(pGPS2);
-   pSatellites.push_back(pGPS3);
-   pSatellites.push_back(pGPS4);
-   pSatellites.push_back(pGPS5);
-   pSatellites.push_back(pGPS6);
-   pSatellites.push_back(pHubble);
-   pSatellites.push_back(pSputnik);
-   pSatellites.push_back(pStarlink);
-   pSatellites.push_back(pDragon);
+   satellites.push_back(pShip);
+   satellites.push_back(pGPS1);
+   satellites.push_back(pGPS2);
+   satellites.push_back(pGPS3);
+   satellites.push_back(pGPS4);
+   satellites.push_back(pGPS5);
+   satellites.push_back(pGPS6);
+   satellites.push_back(pHubble);
+   satellites.push_back(pSputnik);
+   satellites.push_back(pStarlink);
+   satellites.push_back(pDragon);
 
    //Phase Stars
    for (int i = 0; i < 200; i++)
@@ -57,14 +57,13 @@ Game::Game(Position ptUpperRight) :
 }
 
 
-
 /***************************************
 * INPUT
 * Get User Input to move the ship
 ****************************************/
 void Game::input(const Interface* pUI)
 {
-      pSatellites.front()->satelliteInput(pUI, pSatellites);
+   satellites.front()->satelliteInput(pUI, satellites);
 }
 
 /***************************************
@@ -103,7 +102,7 @@ void Game::display(const Interface* pUI)
    drawEarth(ptEarth, angleEarth);
     
    //Draw Satellites
-   for (auto sat : pSatellites)
+   for (auto sat : satellites)
    {
       if (sat->getType() != SHIP)
          sat->draw();
@@ -123,13 +122,13 @@ void Game::display(const Interface* pUI)
 ****************************************/
 void Game::collision()
 {
-   for (auto sat : pSatellites)
+   for (auto sat : satellites)
    {
       if (computeHeightAboveEarth(sat->getPosition().getMetersX(), sat->getPosition().getMetersY()) < 0.0)
             sat->setDeadStatus();
 
       //If we hit other Floating Objects
-      for (auto sat2 : pSatellites)
+      for (auto sat2 : satellites)
       {
          if (sat != sat2 && computeDistance(sat->getPosition(), sat2->getPosition()) < 3000000.0)
          {
@@ -150,17 +149,17 @@ void Game::collision()
 void Game::destroy()
 {
 
-   for (auto it = pSatellites.begin(); it!= pSatellites.end(); )
+   for (auto it = satellites.begin(); it!= satellites.end(); )
    {
       if ((*it)->getStatus() == DEAD)
       {
          if ((*it)->getType() != DECAYABLE)
          {
-            (*it)->spawnFragments(pSatellites);
-            (*it)->spawnParts(pSatellites);
+            (*it)->spawnFragments(satellites);
+            (*it)->spawnParts(satellites);
          }
          delete* it;
-         it = pSatellites.erase(it);
+         it = satellites.erase(it);
       }
       else
          ++it;
@@ -173,7 +172,7 @@ void Game::destroy()
 ****************************************/
 void Game::moveSatellites(const Interface* pUI)
 {
-   for (auto sat : pSatellites)
+   for (auto sat : satellites)
    {
 
       if (sat->getType() != SHIP)
@@ -210,9 +209,9 @@ void Game::breakSatellite()
 {
    if (timeToBreak > 500)
    {
-      double randomPosition = random(0, pSatellites.size());
+      double randomPosition = random(0, satellites.size());
 
-      list<Satellite*>::iterator it = pSatellites.begin();
+      list<Satellite*>::iterator it = satellites.begin();
       advance(it, randomPosition);
       if ((*it)->getType() == SATELLITE)
       {
@@ -232,7 +231,7 @@ void Game::breakSatellite()
 ****************************************/
 void Game::spinBrokenSatellite()
 {
-   for (auto sat : pSatellites)
+   for (auto sat : satellites)
    {
       if (sat->getStatus())
          sat->updateAngle();
@@ -246,11 +245,10 @@ void Game::spinBrokenSatellite()
 ****************************************/
 void Game::updateDecayTime()
 {
-   for (auto it = pSatellites.begin(); it != pSatellites.end(); )
+   for (auto it = satellites.begin(); it != satellites.end(); )
    {
       if ((*it)->getType() == DECAYABLE)
       {
-
          if ((*it)->getDecayTime() == 0)
             (*it)->setDeadStatus();
          else

@@ -13,17 +13,19 @@
 #include "uiDraw.h"
 #include "uiInteract.h" // for INTERFACE
 
+/***********************************************************************
+ * SHIP
+ * This is a type of satellite that the user will control
+ ************************************************************************/
 class Ship : public Satellite
 {
 public:
 
    Ship() {  }
    Ship(double x, double y) {pos.setMetersX(x);  pos.setMetersY(y); type = SHIP;}
-   void  drawSpaceShip(const Interface *pUI)  const {
-      drawShip(pos, angle, pUI->isUp());
-   }
-   //bool getIsShip() { return isShip; }
+
+   void  drawSpaceShip(const Interface *pUI)  const {drawShip(pos, angle, pUI->isUp()); }
    void moveShip(double time, const Interface* pUI);
-   void satelliteInput(const Interface * pUI, list<Satellite*> &pSatellites);
+   void satelliteInput(const Interface * pUI, list<Satellite*> &satellites);
 };
 

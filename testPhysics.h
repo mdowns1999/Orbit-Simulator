@@ -29,7 +29,6 @@ public:
       testComputeHeightAboveEarthTop();
       testComputeHeightAboveEarthRight();
       testComputeHeightAboveEarthMiddle();
-      
    }
 
 
@@ -73,13 +72,13 @@ private:
       double x = 0.0;
       double y = 1000.0;
       double gDirection;
-        //exercise
+      //exercise
       gDirection = gravityDirection(x, y);
 
       //verify
-         assert(x == 0.0);
-         assert(y == 1000.0);
-         assert(closeEnough(0.0, gDirection, 0.1));
+      assert(x == 0.0);
+      assert(y == 1000.0);
+      assert(closeEnough(0.0, gDirection, 0.1));
    } // teardown
 
    void testGravityDirectionRight()
@@ -88,12 +87,12 @@ private:
       double x = 1000.0;
       double y = 0.0;
       double gDirection;
-        //exercise
+      //exercise
       gDirection = gravityDirection(x, y);
       //verify
-         assert(x == 1000.0);
-         assert(y == 0.0);
-         assert(closeEnough(1.571, gDirection, 0.1));
+      assert(x == 1000.0);
+      assert(y == 0.0);
+      assert(closeEnough(1.571, gDirection, 0.1));
    } // teardown
 
    void testGravityDirectionBottom()
@@ -102,12 +101,12 @@ private:
       double x = 0.0;
       double y = -1000.0;
       double gDirection;
-        //exercise
+      //exercise
       gDirection = gravityDirection(x, y);
       //verify
-         assert(x == 0.0);
-         assert(y == -1000.0);
-         assert(closeEnough(3.14159265, gDirection, 0.1));
+      assert(x == 0.0);
+      assert(y == -1000.0);
+      assert(closeEnough(3.14159265, gDirection, 0.1));
    } // teardown
 
    void testComputeHeightAboveEarthTop()
@@ -116,13 +115,12 @@ private:
       double x = 0.0;
       double y = 6379000.0; 
       double height;
-        //exercise
+      //exercise
       height = computeHeightAboveEarth(x, y);
-
       //verify
-         assert(x == 0.0);
-         assert(y == 6379000.0);
-         assert(closeEnough(1000.0, height, 0.1));
+      assert(x == 0.0);
+      assert(y == 6379000.0);
+      assert(closeEnough(1000.0, height, 0.1));
    } // teardown
 
    void testComputeHeightAboveEarthRight()
@@ -131,12 +129,12 @@ private:
       double x = 6379000.0;
       double y = 0.0; 
       double height;
-        //exercise
+      //exercise
       height = computeHeightAboveEarth(x, y);
       //verify
-         assert(x == 6379000.0);
-         assert(y == 0.0);
-         assert(closeEnough(1000.0, height, 0.1));
+      assert(x == 6379000.0);
+      assert(y == 0.0);
+      assert(closeEnough(1000.0, height, 0.1));
    } // teardown
 
    void testComputeHeightAboveEarthMiddle()
@@ -145,11 +143,11 @@ private:
       double x = 6379000.0;
       double y = 6379000.0; 
       double height;
-        //exercise
+      //exercise
       height = computeHeightAboveEarth(x, y);
       //verify
-         assert(x == 6379000.0);
-         assert(y == 6379000.0);
-         assert(closeEnough(2643268.3, height, 1.0));
+      assert(x == 6379000.0);
+      assert(y == 6379000.0);
+      assert(closeEnough(2643268.3, height, 1.0));
    } // teardown
 };

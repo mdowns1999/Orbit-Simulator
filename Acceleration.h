@@ -16,7 +16,6 @@
  * Uses dX and dY to calculate the vertical
  * and horizontal components.
  ************************************************************************/
-
 class Acceleration
 {
 private:

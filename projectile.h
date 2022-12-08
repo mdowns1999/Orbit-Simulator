@@ -10,17 +10,16 @@
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"
-
+ /***********************************************************************
+  * Projectile
+  * A child class of Satellite that will decay
+  * after a short amount of time
+  ************************************************************************/
 class Projectile : public Satellite
 {
-private:
-   bool canDecay = true;
-
 public:
    //Methods
-  Projectile() { decayTime = 6; }
-  Projectile(double x, double y);
-
-   //Getters
+   Projectile() {}
+   Projectile(double x, double y);
    void draw() const { drawProjectile(pos); }
 };
