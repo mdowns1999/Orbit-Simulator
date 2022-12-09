@@ -13,7 +13,6 @@
 #include "position.h"
 #include "uiInteract.h"
 #include "Velocity.h"
-#include "angle.h"
 #include "physics.h"
 #include <iostream>
 #include <list>

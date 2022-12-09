@@ -11,7 +11,6 @@
 #include "testPosition.h"
 #include "testSatellite.h"
 #include "testPhysics.h"
-#include "testAngle.h"
 
 /*****************************************************************
  * TEST RUNNER
